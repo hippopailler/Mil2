@@ -112,7 +112,7 @@ class BagDataset(Dataset):
 
         Args:
 
-            bags (list(str), list(np.ndarray), list(torch.Tensor), list(list(str))):  Bags for each slide.
+            bags (list(str), list(np.ndarray), list(torch.Tensor), list(list(str))):  Bags for each sf..
                 This can either be a list of `.pt`  files, a list of numpy
                 arrays, a list of Tensors, or a list of lists of strings (where
                 each item in the list is a patient, and nested items are slides

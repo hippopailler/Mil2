@@ -2,7 +2,7 @@ import os
 import traceback
 import requests
 import slideflow as sf
-from slideflow.mil import mil_config
+from MIL.mil import mil_config
 import multiprocessing
 import pandas as pd
 import argparse

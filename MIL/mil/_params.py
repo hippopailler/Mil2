@@ -3,11 +3,15 @@
 import numpy as np
 import os
 import torch
-import slideflow as sf
+#import slideflow as sf
 import pandas as pd
 from torch import nn
 from typing import Optional, Union, Callable, List, Tuple, Any, TYPE_CHECKING
-from slideflow import log, errors, Dataset
+#from slideflow import log, errors, Dataset
+from util import log, create_new_model_dir
+from MIL import errors
+import mil
+
 
 from ._registry import get_trainer, build_model_config
 
@@ -114,7 +118,7 @@ class TrainerConfig:
         if isinstance(model, str):
             self.model_config = build_model_config(model, **kwargs)
         else:
-            sf.log.info("Attempting to load custom model class for MIL training.")
+            log.info("Attempting to load custom model class for MIL training.")
             from slideflow.mil import MILModelConfig
             self.model_config = MILModelConfig(model, **kwargs)
         self.model_config.verify_trainer(self)
@@ -233,7 +237,7 @@ class TrainerConfig:
         if outdir:
             if not os.path.exists(outdir):
                 os.makedirs(outdir)
-            outdir = sf.util.create_new_model_dir(outdir, exp_label)
+            outdir = create_new_model_dir(outdir, exp_label)
         return outdir
 
     def build_model(self, n_in: int, n_out: int, **kwargs):
@@ -375,7 +379,7 @@ class TrainerConfig:
 
         # Use training data as validation if no validation set is provided
         if val_dataset is None:
-            sf.log.info(
+            log.info(
                 "Training without validation; metrics will be calculated on training data."
             )
             val_dataset = train_dataset
@@ -861,7 +865,7 @@ class MILModelConfig:
         """MIL model architecture (class/module)."""
         if not isinstance(self.model, str):
             return self.model
-        return sf.mil.get_model(self.model)
+        return mil.get_model(self.model)
 
     @property
     def loss_fn(self):
@@ -1111,6 +1115,7 @@ class MILModelConfig:
             outdir (str): Output directory for saving metrics.
 
         """
+        import slideflow as sf
         if self.model_type in ['classification', 'ordinal', 'multimodal']:
             sf.stats.metrics.classification_metrics(df, level=level, data_dir=outdir)
         elif self.model_type in ['survival', 'multimodal_survival']:

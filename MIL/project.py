@@ -7,6 +7,8 @@ from .. import Dataset
 from typing import (TYPE_CHECKING, Any, Callable, Dict, List, Optional, Tuple,
                     Union)
 from util import log, exists
+from MIL import errors
+import mil
 
 class Project:
     """Version minimaliste de Project pour le MIL."""
