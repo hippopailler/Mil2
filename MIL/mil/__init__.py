@@ -1,9 +1,17 @@
-from .train import (
+"""from .train import (
     train_mil,
     _train_mil,
     _train_multimodal_mil,
     build_fastai_learner,
     build_multimodal_learner
+)"""
+
+from .train import (
+    train_mil,
+    _train_mil,
+    _train_multimodal_mixed_mil,
+    build_fastai_learner,
+    
 )
 from .eval import (
     eval_mil,
