@@ -1,10 +1,10 @@
 """Module minimal pour le MIL, extrait de la classe Project de Slideflow."""
 
 import os
-from typing import Optional, Dict, Union, List
+from typing import Optional, Union, List
 import pandas as pd
 from .. import Dataset
-from typing import (TYPE_CHECKING, Any, Callable, Dict, List, Optional, Tuple,
+from typing import (TYPE_CHECKING, Any, List, Optional,
                     Union)
 from util import log, exists
 from MIL import errors

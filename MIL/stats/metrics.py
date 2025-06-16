@@ -2,11 +2,11 @@
 import multiprocessing as mp
 import numpy as np
 import pandas as pd
-import os
+
 from os.path import join
-import warnings
+
 from sklearn import metrics
-from typing import Dict, List, Optional, Union, Tuple
+from typing import Dict, List, Optional, Tuple
 from util import log
 from MIL import errors
 from pandas.core.frame import DataFrame

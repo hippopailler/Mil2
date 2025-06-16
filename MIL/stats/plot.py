@@ -1,8 +1,8 @@
-import slideflow as sf
+
 import os
 import warnings
-import slideflow as sf
-from typing import TYPE_CHECKING, List, Optional, Union
+
+from typing import TYPE_CHECKING, List, Optional
 
 import numpy as np
 from sklearn import metrics

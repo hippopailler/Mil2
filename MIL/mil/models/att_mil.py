@@ -2,8 +2,6 @@ import torch
 from torch import nn
 from typing import Optional, List, Union
 
-#from slideflow import log
-from util import log
 from model.torch_utils import get_device
 
 

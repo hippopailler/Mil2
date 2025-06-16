@@ -1,6 +1,5 @@
 """Module minimal pour le Dataset MIL."""
 
-import os
 import pandas as pd
 from typing import Optional, Dict, Union, List
 
