@@ -3,24 +3,20 @@
 import os
 import inspect
 import pandas as pd
-import slideflow as sf
 import numpy as np
+import errors
 
-from rich.progress import Progress, track
+from rich.progress import track
 from os.path import join, exists, dirname
 from typing import Union, List, Optional, Callable, Tuple, Any, TYPE_CHECKING
-from slideflow import Dataset, log, errors
-from slideflow.util import path_to_name
-from slideflow.model.extractors import rebuild_extractor
-from slideflow.stats.metrics import ClassifierMetrics
+from util import load_json, write_json, get_new_model_dir, log, path_to_name
+from dataset import Dataset
 from ._params import TrainerConfig
 from . import utils
 
 if TYPE_CHECKING:
     import torch
     from .features import MILFeatures
-    from slideflow.norm import StainNormalizer
-    from slideflow.model.base import BaseFeatureExtractor
 
 # -----------------------------------------------------------------------------
 # User-facing API for evaluation and prediction.
@@ -86,7 +82,7 @@ def eval_mil(
         'model_path': weights,
         'eval_bags': bags,
         'eval_filters': dataset._filters,
-        'mil_params': sf.util.load_json(join(weights, 'mil_params.json'))
+        'mil_params': load_json(join(weights, 'mil_params.json'))
     }
     return config.eval(
         model,
@@ -105,7 +101,7 @@ def eval_mil(
 
 def predict_mil(
     model: Union[str, Callable],
-    dataset: "sf.Dataset",
+    dataset: "Dataset",
     outcomes: Union[str, List[str]],
     bags: Union[str, np.ndarray, List[str]],
     *,
@@ -228,7 +224,7 @@ def predict_mil(
 
 def predict_multimodal_mil(
     model: Union[str, Callable],
-    dataset: "sf.Dataset",
+    dataset: "Dataset",
     outcomes: Union[str, List[str]],
     bags: Union[np.ndarray, List[List[str]]],
     *,
@@ -325,165 +321,6 @@ def predict_multimodal_mil(
     else:
         return df
 
-def predict_slide(
-    model: str,
-    slide: Union[str, sf.WSI],
-    extractor: Optional["BaseFeatureExtractor"] = None,
-    *,
-    normalizer: Optional["StainNormalizer"] = None,
-    config: Optional[TrainerConfig] = None,
-    attention: bool = False,
-    native_normalizer: Optional[bool] = True,
-    extractor_kwargs: Optional[dict] = None,
-    **kwargs
-) -> Tuple[np.ndarray, Optional[np.ndarray]]:
-    """Generate predictions (and attention) for a single slide.
-
-    Args:
-        model (str): Path to MIL model.
-        slide (str): Path to slide.
-        extractor (:class:`slideflow.mil.BaseFeatureExtractor`, optional):
-            Feature extractor. If not provided, will attempt to auto-detect
-            extractor from model.
-
-            .. note::
-                If the extractor has a stain normalizer, this will be used to
-                normalize the slide before extracting features.
-
-    Keyword Args:
-        normalizer (:class:`slideflow.stain.StainNormalizer`, optional):
-            Stain normalizer. If not provided, will attempt to use stain
-            normalizer from extractor.
-        config (:class:`slideflow.mil.TrainerConfig`):
-            Configuration for building model. If None, will attempt to read
-            ``mil_params.json`` from the model directory and load saved
-            configuration. Defaults to None.
-        attention (bool): Whether to return attention scores. Defaults to
-            False.
-        attention_pooling (str): Attention pooling strategy. Either 'avg'
-                or 'max'. Defaults to None.
-        native_normalizer (bool, optional): Whether to use PyTorch/Tensorflow-native
-            stain normalization, if applicable. If False, will use the OpenCV/Numpy
-            implementations. Defaults to None, which auto-detects based on the
-            slide backend (False if libvips, True if cucim). This behavior is due
-            to performance issued when using native stain normalization with
-            libvips-compatible multiprocessing.
-
-    Returns:
-        Tuple[np.ndarray, Optional[np.ndarray]]: Predictions and attention scores.
-        Attention scores are None if ``attention`` is False. For single-channel attention,
-        this is a masked 2D array with the same shape as the slide grid (arranged as a
-        heatmap, with unused tiles masked). For multi-channel attention, this is a
-        masked 3D array with shape ``(n_channels, X, Y)``.
-
-    """
-    # Try to auto-determine the extractor
-    if native_normalizer is None:
-        native_normalizer = (sf.slide_backend() == 'cucim')
-    if extractor is None:
-        extractor, detected_normalizer = rebuild_extractor(
-            model, allow_errors=True, native_normalizer=native_normalizer
-        )
-        if extractor is None:
-            raise ValueError(
-                "Unable to auto-detect feature extractor used for model {}. "
-                "Please specify an extractor.".format(model)
-            )
-    else:
-        detected_normalizer = None
-
-    # Determine stain normalization
-    if detected_normalizer is not None and normalizer is not None:
-        log.warning(
-            "Bags were generated with a stain normalizer, but a different stain "
-            "normalizer was provided to this function. Overriding with provided "
-            "stain normalizer."
-        )
-    elif detected_normalizer is not None:
-        normalizer = detected_normalizer
-
-    # Load model
-    model_fn, config = utils.load_model_weights(model, config)
-    model_fn.eval()
-    mil_params = sf.util.load_json(join(model, 'mil_params.json'))
-    if 'bags_extractor' not in mil_params:
-        raise ValueError(
-            "Unable to determine extractor used for model {}. "
-            "Please specify an extractor.".format(model)
-        )
-    bags_params = mil_params['bags_extractor']
-
-    # Load slide
-    if isinstance(slide, str):
-        if not all(k in bags_params for k in ('tile_px', 'tile_um')):
-            raise ValueError(
-                "Unable to determine tile size for slide {}. "
-                "Either slide must be a slideflow.WSI object, or tile_px and "
-                "tile_um must be specified in mil_params.json.".format(slide)
-            )
-        slide = sf.WSI(
-            slide,
-            tile_px=bags_params['tile_px'],
-            tile_um=bags_params['tile_um']
-        )
-    elif not isinstance(slide, sf.WSI):
-        raise ValueError("slide must either be a str (path to a slide) or a "
-                         "WSI object.")
-
-    # Verify that the slide has the same tile size as the bags
-    if 'tile_px' in bags_params and 'tile_um' in bags_params:
-        bag_px, bag_um = bags_params['tile_px'], bags_params['tile_um']
-        if not sf.util.is_tile_size_compatible(slide.tile_px, slide.tile_um, bag_px, bag_um):
-            log.error(f"Slide tile size (px={slide.tile_px}, um={slide.tile_um}) does not match the tile size "
-                      f"used for bags (px={bag_px}, um={bag_um}). Predictions may be unreliable.")
-
-    # Convert slide to bags
-    if extractor_kwargs is None:
-        extractor_kwargs = dict()
-    masked_bags = extractor(slide, normalizer=normalizer, **extractor_kwargs)
-    original_shape = masked_bags.shape
-    masked_bags = masked_bags.reshape((-1, masked_bags.shape[-1]))
-    if len(masked_bags.mask.shape):
-        mask = masked_bags.mask.any(axis=1)
-        valid_indices = np.where(~mask)
-        bags = masked_bags[valid_indices]
-    else:
-        valid_indices = np.arange(masked_bags.shape[0])
-        bags = masked_bags
-    bags = np.expand_dims(bags, axis=0).astype(np.float32)
-
-    sf.log.info("Generated feature bags for {} tiles".format(bags.shape[1]))
-
-    # Generate predictions.
-    y_pred, raw_att = config.predict(model_fn, bags, attention=attention, **kwargs)
-
-    # Reshape attention to match original shape
-    if attention and raw_att is not None and len(raw_att):
-        y_att = raw_att[0]
-
-        # If attention is a 1D array
-        if len(y_att.shape) == 1:
-            # Create a fully masked array of shape (X, Y)
-            att_heatmap = np.ma.masked_all(masked_bags.shape[0], dtype=y_att.dtype)
-
-            # Unmask and fill the transformed data into the corresponding positions
-            att_heatmap[valid_indices] = y_att
-            y_att = np.reshape(att_heatmap, original_shape[0:2])
-
-        # If attention is a 2D array (multi-channel attention)
-        elif len(y_att.shape) == 2:
-           att_heatmaps = []
-           for i in range(y_att.shape[0]):
-               att = y_att[i]
-               att_heatmap = np.ma.masked_all(masked_bags.shape[0], dtype=att.dtype)
-               att_heatmap[valid_indices] = att
-               att_heatmap = np.reshape(att_heatmap, original_shape[0:2])
-               att_heatmaps.append(att_heatmap)
-           y_att = np.ma.stack(att_heatmaps, axis=0)
-    else:
-        y_att = None
-
-    return y_pred, y_att
 
 # -----------------------------------------------------------------------------
 # Prediction from bags.
@@ -876,9 +713,9 @@ def run_eval(
     if outdir:
         if not exists(outdir):
             os.makedirs(outdir)
-        model_dir = sf.util.get_new_model_dir(outdir, config.model_config.model)
+        model_dir = get_new_model_dir(outdir, config.model_config.model)
         if params is not None:
-            sf.util.write_json(params, join(model_dir, 'mil_params.json'))
+            write_json(params, join(model_dir, 'mil_params.json'))
         pred_out = join(model_dir, 'predictions.parquet')
         df.to_parquet(pred_out)
         log.info(f"Predictions saved to [green]{pred_out}[/]")
@@ -903,14 +740,6 @@ def run_eval(
     # Not supported for multimodal models
     if attention_heatmaps and not config.is_multimodal:
         log.warning("Cannot generate attention heatmaps for multi-modal models.")
-    elif outdir and y_att and attention_heatmaps:
-        generate_attention_heatmaps(
-            outdir=join(model_dir, 'heatmaps'),
-            dataset=dataset,
-            bags=bags,  # type: ignore
-            attention=y_att,
-            **heatmap_kwargs
-        )
 
     return df
 
@@ -919,7 +748,7 @@ def run_eval(
 
 def get_mil_tile_predictions(
     weights: str,
-    dataset: "sf.Dataset",
+    dataset: "Dataset",
     bags: Union[str, np.ndarray, List[str]],
     *,
     config: Optional[TrainerConfig] = None,
@@ -1102,7 +931,7 @@ def get_mil_tile_predictions(
 
 def save_mil_tile_predictions(
     weights: str,
-    dataset: "sf.Dataset",
+    dataset: "Dataset",
     bags: Union[str, np.ndarray, List[str]],
     config: Optional[TrainerConfig] = None,
     outcomes: Union[str, List[str]] = None,
@@ -1122,7 +951,7 @@ def save_mil_tile_predictions(
 
 def generate_mil_features(
     weights: str,
-    dataset: "sf.Dataset",
+    dataset: "Dataset",
     bags: Union[str, np.ndarray, List[str]],
     *,
     config: Optional[TrainerConfig] = None,
@@ -1167,96 +996,3 @@ def generate_mil_features(
     # Calculate and return last-layer features.
     return MILFeatures(model, bags, slides=slides, config=config, dataset=dataset)
 
-
-def generate_attention_heatmaps(
-    outdir: str,
-    dataset: "sf.Dataset",
-    bags: Union[List[str], np.ndarray],
-    attention: Union[np.ndarray, List[np.ndarray]],
-    **kwargs
-) -> None:
-    """Generate and save attention heatmaps for a dataset.
-
-    Args:
-        outdir (str): Path at which to save heatmap images.
-        dataset (sf.Dataset): Dataset.
-        bags (str, list(str)): List of bag file paths.
-            Each bag should contain PyTorch array of features from all tiles in
-            a slide, with the shape ``(n_tiles, n_features)``.
-        attention (list(np.ndarray)): Attention scores for each slide.
-            Length of ``attention`` should equal the length of ``bags``.
-
-    Keyword args:
-        interpolation (str, optional): Interpolation strategy for smoothing
-            heatmap. Defaults to 'bicubic'.
-        cmap (str, optional): Matplotlib colormap for heatmap. Can be any
-            valid matplotlib colormap. Defaults to 'inferno'.
-        norm (str, optional): Normalization strategy for assigning heatmap
-            values to colors. Either 'two_slope', or any other valid value
-            for the ``norm`` argument of ``matplotlib.pyplot.imshow``.
-            If 'two_slope', normalizes values less than 0 and greater than 0
-            separately. Defaults to None.
-
-
-    """
-    assert len(bags) == len(attention)
-    if not exists(outdir):
-        os.makedirs(outdir)
-    pb = Progress(transient=True)
-    task = pb.add_task('Generating heatmaps...', total=len(bags))
-    pb.start()
-    with sf.util.cleanup_progress(pb):
-        for i, bag in enumerate(bags):
-            pb.advance(task)
-            slidename = sf.util.path_to_name(bag)
-            slide_path = dataset.find_slide(slide=slidename)
-            locations_file = join(dirname(bag), f'{slidename}.index.npz')
-            npy_loc_file = locations_file[:-1] + 'y'
-            if slide_path is None:
-                log.info(f"Unable to find slide {slidename}")
-                continue
-            if exists(locations_file):
-                locations = np.load(locations_file)['arr_0']
-            elif exists(npy_loc_file):
-                locations = np.load(npy_loc_file)
-            else:
-                log.info(
-                    f"Unable to find locations index file for {slidename}"
-                )
-                continue
-            
-            # Handle the case of multiple attention values at each tile location.
-            heatmap_kwargs = dict(
-                locations=locations,
-                slide=slide_path,
-                tile_px=dataset.tile_px,
-                tile_um=dataset.tile_um,
-                **kwargs
-            )
-            if (len(attention[i].shape) < 2) or (attention[i].shape[0] == 1):
-                # If there is a single attention value, create a single map.
-                sf.util.location_heatmap(
-                    values=attention[i],
-                    filename=join(outdir, f'{sf.util.path_to_name(slide_path)}_attn.png'),
-                    **heatmap_kwargs
-                )
-            else:
-                # Otherwise, create a separate heatmap for each value,
-                # as well as a heatmap reduced by mean.
-                # The attention values are assumed to have the shape (n_attention, n_tiles).
-                for att_idx in range(attention[i].shape[0]):
-                    sf.util.location_heatmap(
-                        values=attention[i][att_idx, :],
-                        filename=join(outdir, f'{sf.util.path_to_name(slide_path)}_attn-{att_idx}.png'),
-                        **heatmap_kwargs
-                    )
-                sf.util.location_heatmap(
-                        values=np.mean(attention[i], axis=0),
-                        filename=join(outdir, f'{sf.util.path_to_name(slide_path)}_attn-avg.png'),
-                        **heatmap_kwargs
-                    )
-
-
-    log.info(f"Attention heatmaps saved to [green]{outdir}[/]")
-
-# -----------------------------------------------------------------------------
