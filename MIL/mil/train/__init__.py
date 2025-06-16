@@ -8,7 +8,7 @@ from dataset import Dataset
 from os.path import join, isdir
 
 from .. import utils
-from ..eval import predict_mil, generate_attention_heatmaps
+from ..eval import predict_mil
 from .._params import TrainerConfig
 
 if TYPE_CHECKING:
@@ -322,17 +322,6 @@ def _train_multimodal_mixed_mil(
             attention,
             [path_to_name(b) for b in val_bags]
         )
-
-    # Attention heatmaps.
-    if attention and attention_heatmaps and outdir:
-        generate_attention_heatmaps(
-            outdir=join(outdir, 'heatmaps'),
-            dataset=val_dataset,
-            bags=val_bags,
-            attention=attention,
-            **heatmap_kwargs
-        )
-
     return learner
 
 # ------------------------------------------------------------------------------
