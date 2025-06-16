@@ -2,21 +2,23 @@
 
 import os
 import inspect
-import slideflow as sf
 import numpy as np
 import pandas as pd
+import errors
+import util
 
 from os.path import exists, join, isdir
 from typing import Optional, Tuple, Union, Dict, List, Any, TYPE_CHECKING
-from slideflow import errors, log
-from slideflow.util import path_to_name
-from slideflow.model.torch_utils import get_device
+
+from model.torch_utils import get_device
+from mil import mil_config
 from ._params import TrainerConfig
+from util import load_json, log, path_to_name, is_tile_size_compatible, zip_allowed
+from dataset import Dataset
+
 
 if TYPE_CHECKING:
     import torch
-    from slideflow.model.base import BaseFeatureExtractor
-    from slideflow.norm import StainNormalizer
 
 
 # -----------------------------------------------------------------------------
@@ -50,7 +52,7 @@ def load_model_weights(
     import torch
 
     if exists(join(weights, 'mil_params.json')):
-        mil_params = sf.util.load_json(join(weights, 'mil_params.json'))
+        mil_params = load_json(join(weights, 'mil_params.json'))
     else:
         mil_params = None
 
@@ -63,7 +65,7 @@ def load_model_weights(
                 "with 'config'."
             )
         else:
-            config = sf.mil.mil_config(
+            config = mil_config(
                 trainer=mil_params['trainer'],
                 **mil_params['params'],
                 validate=strict
@@ -114,8 +116,8 @@ def load_mil_config(path: str, strict: bool = False) -> TrainerConfig:
         raise errors.ModelError(
             f"Could not find `mil_params.json` at {path}."
         )
-    mil_params = sf.util.load_json(path)
-    return sf.mil.mil_config(
+    mil_params = load_json(path)
+    return mil_config(
         trainer=mil_params['trainer'],
         **mil_params['params'],
         validate=strict
@@ -232,7 +234,7 @@ def aggregate_trainval_bags_by_slide(
 
     # Write slide/bag manifest
     if log_manifest is not None:
-        sf.util.log_manifest(
+        util.log_manifest(
             [bag for bag in bags if path_to_name(bag) in train_slides],
             [bag for bag in bags if path_to_name(bag) in val_slides],
             labels=labels,
@@ -301,7 +303,7 @@ def aggregate_trainval_bags_by_patient(
     if log_manifest is not None:
         train_patients = list(np.unique([slide_to_patient[path_to_name(bags[i][0])] for i in train_idx]))
         val_patients = list(np.unique([slide_to_patient[path_to_name(bags[i][0])] for i in val_idx]))
-        sf.util.log_manifest(
+        util.log_manifest(
             train_patients,
             val_patients,
             labels=patients_labels,
@@ -313,7 +315,7 @@ def aggregate_trainval_bags_by_patient(
 
 
 def get_labels(
-    datasets: Union[sf.Dataset, List[sf.Dataset]],
+    datasets: Union[Dataset, List[Dataset]],
     outcomes: Union[str, List[str]],
     model_type: str,
     *,
@@ -332,7 +334,7 @@ def get_labels(
             Defaults to 'name'.
 
     """
-    if isinstance(datasets, sf.Dataset):
+    if isinstance(datasets, Dataset):
         datasets = [datasets]
 
     # Prepare labels and slides
@@ -610,9 +612,9 @@ def _verify_compatible_tile_size(mil_path: str, bag_path: str, strict: bool = Fa
         log.warning(msg)
         return
 
-    mil_params = sf.util.load_json(join(mil_path, 'mil_params.json'))
+    mil_params = load_json(join(mil_path, 'mil_params.json'))
     mil_bags_params = mil_params['bags_extractor']
-    bags_config = sf.util.load_json(join(bag_path, 'bags_config.json'))
+    bags_config = load_json(join(bag_path, 'bags_config.json'))
 
     def _has_px(d):
         return 'tile_px' in d and 'tile_um' in d
@@ -621,7 +623,7 @@ def _verify_compatible_tile_size(mil_path: str, bag_path: str, strict: bool = Fa
     if _has_px(mil_bags_params) and _has_px(bags_config):
         mil_px, mil_um = mil_bags_params['tile_px'], mil_bags_params['tile_um']
         bag_px, bag_um = bags_config['tile_px'], bags_config['tile_um']
-        if not sf.util.is_tile_size_compatible(bag_px, bag_um, mil_px, mil_um):
+        if not is_tile_size_compatible(bag_px, bag_um, mil_px, mil_um):
             log.error(f"Model tile size (px={mil_px}, um={mil_um}) does not match the tile size "
                       f"of indicated bags (px={bag_px}, um={bag_um}). Predictions may be unreliable.")
 
@@ -699,7 +701,7 @@ def _export_attention(
         os.makedirs(dest)
     for slide, att in zip(slides, y_att):
 
-        if isinstance(att, (list, tuple)) and not sf.util.zip_allowed():
+        if isinstance(att, (list, tuple)) and not zip_allowed():
             raise RuntimeError(
                 "Cannot export multimodal attention scores to a directory (NPZ) "
                 "when ZIP functionality is disabled. Enable zip functionality "
@@ -710,7 +712,7 @@ def _export_attention(
             out_path = join(dest, f'{slide}_att.npz')
             np.savez(out_path, *att)
 
-        elif sf.util.zip_allowed():
+        elif zip_allowed():
             out_path = join(dest, f'{slide}_att.npz')
             np.savez(out_path, att)
 
