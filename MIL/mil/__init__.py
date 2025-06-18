@@ -1,12 +1,10 @@
-"""from .train import (
-    train_mil,
-    _train_mil,
-    _train_multimodal_mil,
-    build_fastai_learner,
-    build_multimodal_learner
-)"""
+from ._params import (
+    mil_config,
+    TrainerConfig,
+    MILModelConfig
+)
 
-from train import (
+from .train import (
     train_mil,
     _train_multimodal_mixed_mil,
     build_fastai_learner,
@@ -16,19 +14,12 @@ from .eval import (
     eval_mil,
     predict_mil,
     predict_multimodal_mil,
-    predict_slide,
     predict_from_bags,
-    predict_from_multimodal_bags,
-    save_mil_tile_predictions,
+    predict_from_multimodal_bags,  
     get_mil_tile_predictions,
     generate_mil_features,
-    generate_attention_heatmaps
 )
-from ._params import (
-    mil_config,
-    TrainerConfig,
-    MILModelConfig
-)
+
 from .utils import load_model_weights, load_mil_config
 """from ._registry import (
     list_trainers, list_models, is_trainer, is_model,

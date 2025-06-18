@@ -4,13 +4,13 @@ import os
 import inspect
 import pandas as pd
 import numpy as np
-import errors
+import MIL.errors as errors
 
 from rich.progress import track
 from os.path import join, exists, dirname
 from typing import Union, List, Optional, Callable, Tuple, Any, TYPE_CHECKING
-from util import load_json, write_json, get_new_model_dir, log, path_to_name
-from dataset import Dataset
+from MIL.util import load_json, write_json, get_new_model_dir, log, path_to_name
+from MIL.dataset import Dataset
 from ._params import TrainerConfig
 from . import utils
 

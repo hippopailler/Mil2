@@ -1,0 +1,31 @@
+{
+ "trainer": "fastai",
+ "params": {
+  "lr": 0.01,
+  "wd": 1e-05,
+  "bag_size": 512,
+  "max_val_bag_size": null,
+  "fit_one_cycle": true,
+  "epochs": 2,
+  "batch_size": 4,
+  "drop_last": true,
+  "save_monitor": "c_index",
+  "weighted_loss": true,
+  "mixed_bags": true,
+  "reconstruction_weight": null,
+  "model": "mb_attention_mil",
+  "model_kwargs": null,
+  "loss": "mm_survival_loss",
+  "use_lens": true
+ },
+ "outcomes": "os",
+ "outcome_labels": null,
+ "bags": "tests/features/fake_mm_surv/bags",
+ "input_shape": [
+  1,
+  2,
+  3
+ ],
+ "output_shape": 1,
+ "bags_extractor": null
+}

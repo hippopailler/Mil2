@@ -3,10 +3,10 @@
 import os
 from typing import Optional, Union, List
 import pandas as pd
-from .. import Dataset
+from MIL.dataset import Dataset
 from typing import (TYPE_CHECKING, Any, List, Optional,
                     Union)
-from util import log, exists
+from MIL.util import log, exists
 from MIL import errors
 import mil
 

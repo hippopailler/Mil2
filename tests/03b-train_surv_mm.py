@@ -1,20 +1,20 @@
 import os
 import traceback
 import requests
-#import slideflow as sf
-from MIL.mil import mil_config
-from MIL.project import Project
+import slideflow as sf
+from slideflow.mil import mil_config
+from slideflow.mil.utils import prepare_multimodal_mixed_bags
 import multiprocessing
 import pandas as pd
 import argparse
-import torch
+
 
 def train_val(args):
-    P = Project(os.getcwd())
-    P.annotations = 'annotations/ann_mm_surv.csv'
+    P = sf.Project(os.getcwd(),create=True)
+    P.annotations = 'tests/annotations/ann_mm_surv.csv'
 
     # Vérification des annotations
-    ann_df = pd.read_csv('annotations/ann_mm_surv.csv')
+    ann_df = pd.read_csv('tests/annotations/ann_mm_surv.csv')
     print(f"Nombre de slides dans les annotations: {len(ann_df)}")
     print("Distribution des datasets:")
     print(ann_df['dataset'].value_counts())

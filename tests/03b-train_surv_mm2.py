@@ -1,16 +1,16 @@
 import os
-import traceback
-import requests
-import slideflow as sf
-from slideflow.mil import mil_config
-from slideflow.util import prepare_multimodal_mixed_bags
+#import slideflow as sf
+#from slideflow.mil import mil_config
+#from slideflow.util import prepare_multimodal_mixed_bags
+from MIL.util import prepare_multimodal_mixed_bags
+from MIL.mil import mil_config
+from MIL.project import Project
+
 import multiprocessing
-import pandas as pd
-from pathlib import Path
 import argparse
 
 def train_val(args):
-    P = sf.Project(os.getcwd(), create=True)
+    P = Project(os.getcwd(), create=True)
     P.annotations = 'tests/annotations/ann_mm_surv.csv'
 
     extractor = '.'

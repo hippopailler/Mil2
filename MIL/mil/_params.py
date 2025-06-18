@@ -8,7 +8,7 @@ import pandas as pd
 from torch import nn
 from typing import Optional, Union, Callable, List, Tuple, Any, TYPE_CHECKING
 #from slideflow import log, errors, Dataset
-from util import log, create_new_model_dir
+from MIL.util import log, create_new_model_dir
 from MIL import errors
 from MIL.dataset import Dataset
 import mil

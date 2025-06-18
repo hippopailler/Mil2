@@ -3,8 +3,8 @@
 import numpy as np
 from os.path import join, exists
 from typing import Union, List, Optional, TYPE_CHECKING
-from util import path_to_name, log, load_json, write_json
-from dataset import Dataset
+from MIL.util import path_to_name, log, load_json, write_json
+from MIL.dataset import Dataset
 from os.path import join, isdir
 
 from .. import utils

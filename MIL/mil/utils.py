@@ -4,17 +4,17 @@ import os
 import inspect
 import numpy as np
 import pandas as pd
-import errors
-import util
+import MIL.errors as errors
+import MIL.util as util
 
 from os.path import exists, join, isdir
 from typing import Optional, Tuple, Union, Dict, List, Any, TYPE_CHECKING
 
-from model.torch_utils import get_device
-from mil import mil_config
+from MIL.model.torch_utils import get_device
+from MIL.mil import mil_config
 from ._params import TrainerConfig
-from util import load_json, log, path_to_name, is_tile_size_compatible, zip_allowed
-from dataset import Dataset
+from MIL.util import load_json, log, path_to_name, zip_allowed
+from MIL.dataset import Dataset
 
 
 if TYPE_CHECKING:
@@ -623,9 +623,7 @@ def _verify_compatible_tile_size(mil_path: str, bag_path: str, strict: bool = Fa
     if _has_px(mil_bags_params) and _has_px(bags_config):
         mil_px, mil_um = mil_bags_params['tile_px'], mil_bags_params['tile_um']
         bag_px, bag_um = bags_config['tile_px'], bags_config['tile_um']
-        if not is_tile_size_compatible(bag_px, bag_um, mil_px, mil_um):
-            log.error(f"Model tile size (px={mil_px}, um={mil_um}) does not match the tile size "
-                      f"of indicated bags (px={bag_px}, um={bag_um}). Predictions may be unreliable.")
+        
 
 
 def _pool_attention(

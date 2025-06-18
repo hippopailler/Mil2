@@ -100,11 +100,11 @@ df = pd.DataFrame({
 }, index=slides)
 
 # Create directories if needed
-if not os.path.exists('features/fake_mm_surv'):
-    os.makedirs('features/fake_mm_surv')
+if not os.path.exists('tests/features/fake_mm_surv'):
+    os.makedirs('tests/features/fake_mm_surv')
 
 # Save feature data
-df.to_parquet('features/fake_mm_surv/df.parquet')
+df.to_parquet('tests/features/fake_mm_surv/df.parquet')
 
 # Create patient risk groups for stratification
 patient_risk_groups = {}
@@ -164,8 +164,8 @@ ann_df = pd.DataFrame({
 })
 
 # Create directory if needed
-if not os.path.exists('annotations'):
-    os.makedirs('annotations')
+if not os.path.exists('tests/annotations'):
+    os.makedirs('tests/annotations')
 
 # Save annotations
-ann_df.to_csv('annotations/ann_mm_surv.csv', index=False)
+ann_df.to_csv('tests/annotations/ann_mm_surv.csv', index=False)

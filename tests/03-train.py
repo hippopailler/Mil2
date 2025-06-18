@@ -22,8 +22,7 @@ def train_val(args):
     val_dataset = P.dataset(tile_px=256, tile_um=256, filters={'dataset': 'val'})
 
     if True:
-        #model = 'mb_attention_mil'
-        model = 'mm_attention_mil'
+        model = 'mb_attention_mil'
         config = mil_config(
             model,
             # bag_size=bag_size,
@@ -35,21 +34,13 @@ def train_val(args):
         )
         config.mixed_bags = True
 
-        # Créer une liste de chemins pour chaque modalité
-        bags_paths = [
-            'features/fake_mm_surv/df.parquet#mod1',
-            'features/fake_mm_surv/df.parquet#mod2',
-            'features/fake_mm_surv/df.parquet#mod3'
-        ]
-
         P.train_mil(
             config=config,
             exp_label=f'label',
             outcomes='adsq',
             train_dataset=train_dataset,
             val_dataset=val_dataset,
-            #bags=f'features/fake_mm/bags'
-            bags=bags_paths
+            bags=f'features/fake_mm/bags'
         )
     else:
         model = 'attention_mil' 
