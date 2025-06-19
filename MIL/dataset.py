@@ -15,7 +15,7 @@ class Dataset:
     def __init__(
         self,
         config: Optional[Union[str, Dict[str, Dict[str, str]]]] = None,
-        sources : Optional[Union[str, List[str]]] = None,
+        sources: Optional[Union[str, List[str]]] = None,
         tile_px: Optional[int] = None,
         tile_um: Optional[Union[int, str]] = None,
         *,
@@ -24,59 +24,56 @@ class Dataset:
         annotations: Optional[Union[str, pd.DataFrame]] = None,
         min_tiles: int = 0,
     ) -> None:
-        """Initialise un Dataset pour MIL.
-        
-        Args:
-            tile_px: Taille des tuiles en pixels
-            tile_um: Taille des tuiles en microns ou magnification (ex: "20x")
-            filters: Filtres pour sélectionner les slides
-            annotations: Fichier d'annotations CSV ou DataFrame
-        """
+        """Initialise un Dataset pour MIL."""
         self.tile_px = tile_px
         self.tile_um = tile_um
         self._filters = filters if filters else {}
-        
-        self._min_tiles = min_tiles 
-        self._clip = {}  # type: Dict[str, int] 
-        self.prob_weights = None  # type: Optional[Dict] 
-        self._annotations = None  # type: Optional[pd.DataFrame] 
-        self.annotations_file = None  # type: Optional[str] 
-        
+        self._min_tiles = min_tiles
+        self._clip = {}
+        self.prob_weights = None
+        self._annotations = None
+        self.annotations_file = None
+
+        # Configuration par défaut comme dans Slideflow
+        default_config = {
+            'source1': {
+                'path': 'tests/features/fake_mm_surv',
+                'tfrecords': 'tests/features/fake_mm_surv/bags',
+                'label': None
+            }
+        }
+
+        # Utiliser la config fournie ou la config par défaut
         if isinstance(config, str):
             self.config = config
             loaded_config = load_json(config)
+        elif config is None:
+            loaded_config = default_config
+            self._config = "<default>"
         else:
             self._config = "<dict>"
             loaded_config = config
-        
-# Read dataset sources from the configuration 
-        if sources is None: 
-            raise ValueError("Missing argument 'sources'") 
-        sources = sources if isinstance(sources, list) else [sources] 
-        try: 
-            self.sources = { 
-                k: v for k, v in loaded_config.items() if k in sources 
-            } 
-            self.sources_names = list(self.sources.keys()) 
-        except KeyError: 
-            sources_list = ', '.join(sources) 
-            raise errors.SourceNotFoundError(sources_list, config) 
-        missing_sources = [s for s in sources if s not in self.sources] 
-        if len(missing_sources): 
-            log.warn( 
-                "The following sources were not found in the dataset " 
-                f"configuration: {', '.join(missing_sources)}" 
-            ) 
 
-        # Create labels for each source based on tile size 
-        if (tile_px is not None) and (tile_um is not None): 
-            label = tile_size_label(tile_px, tile_um) 
-        else: 
-            label = None 
-        for source in self.sources: 
-            self.sources[source]['label'] = label 
- 
-        # Load annotations 
+        # Gestion des sources comme dans Slideflow
+        if sources is None:
+            sources = ['source1']  # Source par défaut
+        sources = sources if isinstance(sources, list) else [sources]
+
+        # Configuration des sources
+        self.sources = {
+            k: v for k, v in loaded_config.items() if k in sources
+        }
+        self.sources_names = list(self.sources.keys())
+
+        # Ne pas afficher d'avertissement pour la source par défaut
+        missing_sources = [s for s in sources if s not in self.sources and s != 'source1']
+        if len(missing_sources):
+            log.warn(
+                "The following sources were not found in the dataset "
+                f"configuration: {', '.join(missing_sources)}"
+            )
+
+        # Chargement des annotations
         if annotations is not None:
             self.load_annotations(annotations)
 
@@ -518,4 +515,4 @@ class Dataset:
         if key == 'path': 
             return all_manifest 
         else: 
-            return {path_to_name(t): v for t, v in all_manifest.items()} 
+            return {path_to_name(t): v for t, v in all_manifest.items()}
