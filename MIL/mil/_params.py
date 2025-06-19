@@ -3,18 +3,16 @@
 import numpy as np
 import os
 import torch
-#import slideflow as sf
 import pandas as pd
 from torch import nn
 from typing import Optional, Union, Callable, List, Tuple, Any, TYPE_CHECKING
-#from slideflow import log, errors, Dataset
 from MIL.util import log, create_new_model_dir
 from MIL import errors
 from MIL.dataset import Dataset
-import mil
+import MIL.mil as mil
 
 
-from ._registry import get_trainer, build_model_config
+from ._registry import get_trainer, build_model_config, get_model
 
 if TYPE_CHECKING:
     from fastai.learner import Learner
@@ -22,7 +20,7 @@ if TYPE_CHECKING:
 def concordance_index(axis=-1):
     """Concordance index metric for survival analysis."""
     from fastai.metrics import skm_to_fastai
-    from slideflow.stats.concordance import c_index
+    from MIL.stats.concordance import c_index
     return skm_to_fastai(c_index, is_class=False, flatten=False)
 
 # -----------------------------------------------------------------------------
@@ -120,7 +118,7 @@ class TrainerConfig:
             self.model_config = build_model_config(model, **kwargs)
         else:
             log.info("Attempting to load custom model class for MIL training.")
-            from slideflow.mil import MILModelConfig
+            from MIL.mil import MILModelConfig
             self.model_config = MILModelConfig(model, **kwargs)
         self.model_config.verify_trainer(self)
 
@@ -373,7 +371,7 @@ class TrainerConfig:
                 separately. Defaults to None.
 
         """
-        from slideflow.mil.train import _train_mil, _train_multimodal_mil, _train_multimodal_mixed_mil
+        from MIL.mil.train import _train_multimodal_mixed_mil
 
         # Prepare output directory
         outdir = self.prepare_training(outcomes, exp_label, outdir)
@@ -385,13 +383,8 @@ class TrainerConfig:
             )
             val_dataset = train_dataset
 
-        # Check if multimodal training
-        if self.is_multimodal:
-            train_fn = _train_multimodal_mil
-        elif self.mixed_bags:
+        if self.mixed_bags:
             train_fn = _train_multimodal_mixed_mil
-        else:
-            train_fn = _train_mil
 
         # Execute training
         return train_fn(
@@ -866,7 +859,7 @@ class MILModelConfig:
         """MIL model architecture (class/module)."""
         if not isinstance(self.model, str):
             return self.model
-        return mil.get_model(self.model)
+        return get_model(self.model)
 
     @property
     def loss_fn(self):
@@ -1001,7 +994,7 @@ class MILModelConfig:
         dataloader_kwargs = None
     ) -> "torch.utils.DataLoader":
         from fastai.vision.all import DataLoader
-        from slideflow.mil import data as data_utils
+        from MIL.mil import data as data_utils
 
         dataset_kwargs = dataset_kwargs or dict()
         dataloader_kwargs = dataloader_kwargs or dict()
@@ -1039,7 +1032,7 @@ class MILModelConfig:
         """
         self._verify_eval_params(**kwargs)
 
-        from slideflow.mil.eval import predict_from_bags, predict_from_multimodal_bags, predict_from_mixed_bags
+        from MIL.mil.eval import predict_from_bags, predict_from_multimodal_bags, predict_from_mixed_bags
 
         if apply_softmax is None:
             apply_softmax = self.apply_softmax
@@ -1090,7 +1083,7 @@ class MILModelConfig:
             Tuple[np.ndarray, List[np.ndarray]]: Predictions and attention.
 
         """
-        from slideflow.mil.eval import run_inference
+        from MIL.mil.eval import run_inference
 
         if apply_softmax is None:
             apply_softmax = self.apply_softmax
@@ -1116,13 +1109,14 @@ class MILModelConfig:
             outdir (str): Output directory for saving metrics.
 
         """
-        import slideflow as sf
+        #import slideflow as sf
+        import MIL.stats.metrics as stats_metrics
         if self.model_type in ['classification', 'ordinal', 'multimodal']:
-            sf.stats.metrics.classification_metrics(df, level=level, data_dir=outdir)
+            stats_metrics.classification_metrics(df, level=level, data_dir=outdir)
         elif self.model_type in ['survival', 'multimodal_survival']:
-            sf.stats.metrics.survival_metrics(df, level=level, data_dir=outdir)
+            stats_metrics.survival_metrics(df, level=level, data_dir=outdir)
         else:
-            sf.stats.metrics.regression_metrics(df, level=level, data_dir=outdir)
+            stats_metrics.regression_metrics(df, level=level, data_dir=outdir)
 
 # -----------------------------------------------------------------------------
 

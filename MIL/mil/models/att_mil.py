@@ -2,7 +2,7 @@ import torch
 from torch import nn
 from typing import Optional, List, Union
 
-from model.torch_utils import get_device
+from MIL.model.torch_utils import get_device
 
 
 def Attention(n_in: int, n_latent: Optional[int] = None) -> nn.Module:

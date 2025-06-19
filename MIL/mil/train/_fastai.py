@@ -10,8 +10,8 @@ from fastai.vision.all import (
     DataLoaders, Learner, SaveModelCallback, CSVLogger
 )
 
-from util import log
-from model import torch_utils
+from MIL.util import log
+from MIL.model import torch_utils
 from .._params import TrainerConfig
 
 # -----------------------------------------------------------------------------

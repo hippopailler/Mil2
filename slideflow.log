@@ -458,3 +458,692 @@
 2025-06-18 15:04:06 [INFO] - Attention scores exported to [green]/home/hippolyte/PRE/mil/mil/00002-fake_mm-mb_attention_mil/attention/15_att.npz[/]
 2025-06-18 16:56:14 [INFO] - Determining feature dimensions...
 2025-06-18 16:56:14 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-18 16:58:21 [INFO] - Determining feature dimensions...
+2025-06-18 16:58:22 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-18 17:07:39 [INFO] - Determining feature dimensions...
+2025-06-18 17:07:40 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 10:17:19 [INFO] - Determining feature dimensions...
+2025-06-19 10:17:20 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:00:12 [INFO] - Determining feature dimensions...
+2025-06-19 11:00:12 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:00:12 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:06:31 [INFO] - Determining feature dimensions...
+2025-06-19 11:06:31 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:06:31 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:06:31 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:20:56 [INFO] - Determining feature dimensions...
+2025-06-19 11:20:56 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:20:56 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:20:56 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:23:36 [INFO] - Determining feature dimensions...
+2025-06-19 11:23:36 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:23:36 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:23:36 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:23:36 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:23:36 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:23:36 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:23:36 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:33:27 [INFO] - Determining feature dimensions...
+2025-06-19 11:33:28 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:33:28 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:33:28 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:33:28 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:33:28 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:33:28 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:33:28 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:36:39 [INFO] - Determining feature dimensions...
+2025-06-19 11:36:39 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:36:39 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:36:39 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:36:39 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:36:39 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:36:39 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:36:39 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:37:52 [INFO] - Determining feature dimensions...
+2025-06-19 11:37:53 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:37:53 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:37:53 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:37:53 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:37:53 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:37:53 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:37:53 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:39:18 [INFO] - Determining feature dimensions...
+2025-06-19 11:39:18 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:39:18 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:39:18 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:39:18 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:39:18 [WARNING] - The following sources were not found in the dataset configuration: source1
+2025-06-19 11:39:18 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:39:18 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:39:21 [INFO] - Training FastAI MIL model with config:
+2025-06-19 11:39:21 [INFO] - Training FastAI MIL model with config:
+2025-06-19 11:39:21 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 11:39:21 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 11:39:27 [WARNING] - Bags missing for 60 slides.
+2025-06-19 11:39:27 [WARNING] - Bags missing for 60 slides.
+2025-06-19 11:39:27 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 11:39:27 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 11:39:27 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 11:39:27 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 11:39:27 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 11:39:27 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 11:39:27 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 11:39:27 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 11:39:27 [WARNING] - Bags missing for 240 slides.
+2025-06-19 11:39:27 [WARNING] - Bags missing for 240 slides.
+2025-06-19 11:39:27 [WARNING] - Bags missing for 60 slides.
+2025-06-19 11:39:27 [WARNING] - Bags missing for 60 slides.
+2025-06-19 11:39:27 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 11:39:27 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 11:39:27 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 11:39:27 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 11:39:27 [DEBUG] - Building FastAI learner
+2025-06-19 11:39:27 [DEBUG] - Building FastAI learner
+2025-06-19 11:45:48 [INFO] - Determining feature dimensions...
+2025-06-19 11:45:49 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:45:49 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:45:49 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:45:49 [DEBUG] - Verifying slide annotations...
+2025-06-19 11:45:49 [DEBUG] - Verifying tfrecords...
+2025-06-19 11:45:49 [INFO] - Training FastAI MIL model with config:
+2025-06-19 11:45:49 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 11:45:49 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 11:45:49 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 11:45:49 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 11:45:49 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 11:45:49 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-19 11:45:49 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-19 11:45:49 [DEBUG] - Building FastAI learner
+2025-06-19 11:45:49 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-19 11:45:54 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 11:45:54 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 11:45:54 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 11:45:54 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 11:45:54 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/mil/00003-fake_mm-mb_attention_mil/predictions.parquet[/]
+2025-06-19 11:45:54 [INFO] - C-index (slide-level): 0.938
+2025-06-19 11:45:54 [INFO] - Attention scores exported to [green]/home/hippolyte/PRE/mil/mil/00003-fake_mm-mb_attention_mil/attention/15_att.npz[/]
+2025-06-19 11:52:07 [INFO] - Determining feature dimensions...
+2025-06-19 11:52:08 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 11:52:08 [DEBUG] - Verifying slide annotations...
+2025-06-19 12:02:27 [INFO] - Determining feature dimensions...
+2025-06-19 12:02:27 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 12:02:27 [DEBUG] - Verifying slide annotations...
+2025-06-19 12:02:27 [DEBUG] - Verifying tfrecords...
+2025-06-19 12:02:27 [DEBUG] - Verifying slide annotations...
+2025-06-19 12:02:27 [DEBUG] - Verifying tfrecords...
+2025-06-19 12:02:31 [INFO] - Training FastAI MIL model with config:
+2025-06-19 12:02:31 [INFO] - Training FastAI MIL model with config:
+2025-06-19 12:02:31 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 12:02:31 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 12:02:32 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:02:32 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:02:32 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:02:32 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:02:32 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:02:32 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:02:32 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:02:32 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:02:32 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:02:32 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:02:32 [WARNING] - Bags missing for 240 slides.
+2025-06-19 12:02:32 [WARNING] - Bags missing for 240 slides.
+2025-06-19 12:02:32 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:02:32 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:02:32 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 12:02:32 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 12:02:32 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 12:02:32 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 12:02:32 [DEBUG] - Building FastAI learner
+2025-06-19 12:02:32 [DEBUG] - Building FastAI learner
+2025-06-19 12:06:25 [INFO] - Determining feature dimensions...
+2025-06-19 12:06:25 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 12:06:25 [DEBUG] - Verifying slide annotations...
+2025-06-19 12:06:25 [DEBUG] - Verifying tfrecords...
+2025-06-19 12:06:25 [DEBUG] - Verifying slide annotations...
+2025-06-19 12:06:25 [DEBUG] - Verifying tfrecords...
+2025-06-19 12:06:28 [INFO] - Training FastAI MIL model with config:
+2025-06-19 12:06:28 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 12:06:28 [INFO] - Training FastAI MIL model with config:
+2025-06-19 12:06:28 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 12:06:29 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:06:29 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:06:29 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:06:29 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:06:29 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:06:29 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:06:29 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:06:29 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:06:29 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:06:29 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:06:29 [WARNING] - Bags missing for 240 slides.
+2025-06-19 12:06:29 [WARNING] - Bags missing for 240 slides.
+2025-06-19 12:06:29 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:06:29 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:06:29 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 12:06:29 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 12:06:29 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 12:06:29 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 12:06:29 [DEBUG] - Building FastAI learner
+2025-06-19 12:06:29 [DEBUG] - Building FastAI learner
+2025-06-19 12:17:42 [INFO] - Determining feature dimensions...
+2025-06-19 12:17:42 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 12:17:42 [DEBUG] - Verifying slide annotations...
+2025-06-19 12:17:42 [DEBUG] - Verifying tfrecords...
+2025-06-19 12:17:42 [DEBUG] - Verifying slide annotations...
+2025-06-19 12:17:42 [DEBUG] - Verifying tfrecords...
+2025-06-19 12:17:46 [INFO] - Training FastAI MIL model with config:
+2025-06-19 12:17:46 [INFO] - Training FastAI MIL model with config:
+2025-06-19 12:17:46 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 12:17:46 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 12:22:30 [INFO] - Determining feature dimensions...
+2025-06-19 12:22:30 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 12:22:30 [DEBUG] - Verifying slide annotations...
+2025-06-19 12:22:30 [DEBUG] - Verifying tfrecords...
+2025-06-19 12:22:30 [DEBUG] - Verifying slide annotations...
+2025-06-19 12:22:30 [DEBUG] - Verifying tfrecords...
+2025-06-19 12:22:33 [INFO] - Training FastAI MIL model with config:
+2025-06-19 12:22:33 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 12:22:33 [INFO] - Training FastAI MIL model with config:
+2025-06-19 12:22:33 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 12:22:34 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:22:34 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:22:34 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:22:34 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:22:34 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:22:34 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:22:34 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:22:34 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 12:22:34 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:22:34 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 12:22:34 [WARNING] - Bags missing for 240 slides.
+2025-06-19 12:22:34 [WARNING] - Bags missing for 240 slides.
+2025-06-19 12:22:34 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:22:34 [WARNING] - Bags missing for 60 slides.
+2025-06-19 12:22:34 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 12:22:34 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 12:22:34 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 12:22:34 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 12:22:34 [DEBUG] - Building FastAI learner
+2025-06-19 12:22:34 [DEBUG] - Building FastAI learner
+2025-06-19 14:09:42 [INFO] - Determining feature dimensions...
+2025-06-19 14:09:42 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 14:09:42 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:09:42 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:09:42 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:09:42 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:09:42 [INFO] - Training FastAI MIL model with config:
+2025-06-19 14:09:42 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 14:10:16 [INFO] - Determining feature dimensions...
+2025-06-19 14:10:16 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 14:10:16 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:10:16 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:10:16 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:10:16 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:10:16 [INFO] - Training FastAI MIL model with config:
+2025-06-19 14:10:16 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 14:10:19 [WARNING] - Bags missing for 60 slides.
+2025-06-19 14:10:19 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:10:19 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:10:19 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:10:19 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:10:19 [WARNING] - Bags missing for 240 slides.
+2025-06-19 14:10:19 [WARNING] - Bags missing for 60 slides.
+2025-06-19 14:10:19 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 14:10:19 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 14:10:19 [DEBUG] - Building FastAI learner
+2025-06-19 14:17:10 [INFO] - Determining feature dimensions...
+2025-06-19 14:17:11 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 14:17:11 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:17:11 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:17:11 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:17:11 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:17:11 [INFO] - Training FastAI MIL model with config:
+2025-06-19 14:17:11 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 14:17:14 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:17:14 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:17:14 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:17:14 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:17:14 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 14:17:14 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 14:17:14 [DEBUG] - Building FastAI learner
+2025-06-19 14:18:09 [INFO] - Determining feature dimensions...
+2025-06-19 14:18:09 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 14:18:09 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:18:09 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:18:09 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:18:09 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:18:09 [INFO] - Training FastAI MIL model with config:
+2025-06-19 14:18:09 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 14:18:10 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:18:10 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:18:10 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:18:10 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:18:10 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-19 14:18:10 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-19 14:18:10 [DEBUG] - Building FastAI learner
+2025-06-19 14:18:10 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-19 14:18:13 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:18:13 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:18:13 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:18:13 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:18:14 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/mil/00004-fake_mm-mb_attention_mil/predictions.parquet[/]
+2025-06-19 14:18:14 [INFO] - C-index (slide-level): 0.897
+2025-06-19 14:18:14 [INFO] - Attention scores exported to [green]/home/hippolyte/PRE/mil/mil/00004-fake_mm-mb_attention_mil/attention/15_att.npz[/]
+2025-06-19 14:22:20 [INFO] - Determining feature dimensions...
+2025-06-19 14:22:21 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 14:22:21 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:22:21 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:22:21 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:22:21 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:22:21 [INFO] - Training FastAI MIL model with config:
+2025-06-19 14:22:21 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 14:22:23 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:22:23 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:22:23 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:22:23 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:25:23 [INFO] - Determining feature dimensions...
+2025-06-19 14:25:23 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 14:25:23 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:25:23 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:25:23 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:25:23 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:25:23 [INFO] - Training FastAI MIL model with config:
+2025-06-19 14:25:23 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 14:25:26 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:25:26 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:25:26 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:25:26 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:26:34 [INFO] - Determining feature dimensions...
+2025-06-19 14:26:35 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 14:26:35 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:26:35 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:26:35 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:26:35 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:26:35 [INFO] - Training FastAI MIL model with config:
+2025-06-19 14:26:35 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 14:26:37 [WARNING] - Bags missing for 60 slides.
+2025-06-19 14:26:37 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:26:37 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:26:37 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:26:37 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:26:37 [WARNING] - Bags missing for 240 slides.
+2025-06-19 14:26:37 [WARNING] - Bags missing for 60 slides.
+2025-06-19 14:26:37 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 14:26:37 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 14:26:37 [DEBUG] - Building FastAI learner
+2025-06-19 14:58:36 [INFO] - Determining feature dimensions...
+2025-06-19 14:58:37 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 14:58:37 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:58:37 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:58:37 [DEBUG] - Verifying slide annotations...
+2025-06-19 14:58:37 [DEBUG] - Verifying tfrecords...
+2025-06-19 14:58:37 [INFO] - Training FastAI MIL model with config:
+2025-06-19 14:58:37 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 14:58:40 [WARNING] - Bags missing for 60 slides.
+2025-06-19 14:58:40 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:58:40 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:58:40 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 14:58:40 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 14:58:40 [WARNING] - Bags missing for 240 slides.
+2025-06-19 14:58:40 [WARNING] - Bags missing for 60 slides.
+2025-06-19 14:58:40 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 14:58:40 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 14:58:40 [DEBUG] - Building FastAI learner
+2025-06-19 15:15:50 [INFO] - Determining feature dimensions...
+2025-06-19 15:15:50 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 15:15:50 [DEBUG] - Verifying slide annotations...
+2025-06-19 15:15:50 [DEBUG] - Verifying tfrecords...
+2025-06-19 15:15:50 [DEBUG] - Verifying slide annotations...
+2025-06-19 15:15:50 [DEBUG] - Verifying tfrecords...
+2025-06-19 15:15:50 [INFO] - Training FastAI MIL model with config:
+2025-06-19 15:15:50 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 15:15:52 [WARNING] - Bags missing for 60 slides.
+2025-06-19 15:15:52 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 15:15:52 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 15:15:53 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 15:15:53 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 15:15:53 [WARNING] - Bags missing for 240 slides.
+2025-06-19 15:15:53 [WARNING] - Bags missing for 60 slides.
+2025-06-19 15:15:53 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 15:15:53 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 15:15:53 [DEBUG] - Building FastAI learner

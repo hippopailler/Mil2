@@ -8,7 +8,7 @@ from typing import (TYPE_CHECKING, Any, List, Optional,
                     Union)
 from MIL.util import log, exists
 from MIL import errors
-import mil
+import MIL.mil as mil
 
 class Project:
     """Version minimaliste de Project pour le MIL."""
@@ -31,7 +31,7 @@ class Project:
             'dataset_config': './datasets.json',
             'models_dir': './models',
             'eval_dir': './eval',
-            'sources': ['source1']
+            'sources': ['source1']  # Sources par défaut
         }
         
         # Créer les dossiers nécessaires
@@ -58,6 +58,11 @@ class Project:
     @property
     def eval_dir(self) -> str:
         return os.path.join(self.root, self._settings['eval_dir'])
+
+    @property
+    def sources(self) -> List[str]:
+        """Liste des sources de données configurées."""
+        return self._settings['sources']
 
     def dataset(
             self,
@@ -141,7 +146,7 @@ class Project:
             outdir: Dossier de sortie
             **kwargs: Arguments additionnels
         """
-        from slideflow.mil import train_mil
+        from MIL.mil import train_mil
 
         # Configuration du dossier de sortie
         if outdir is None:

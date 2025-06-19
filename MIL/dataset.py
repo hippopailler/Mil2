@@ -331,6 +331,7 @@ class Dataset:
         if (len(unique_slides_with_bags) != len(slides)) and warn_missing: 
             log.warning(f"Bags missing for {len(slides) - len(unique_slides_with_bags)} slides.") 
         return bags 
+    
  
     def slides(self) -> List[str]: 
         """Return a list of slide names in this dataset.""" 
