@@ -1147,3 +1147,932 @@
 2025-06-19 15:15:53 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
 2025-06-19 15:15:53 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
 2025-06-19 15:15:53 [DEBUG] - Building FastAI learner
+2025-06-19 15:20:15 [INFO] - Determining feature dimensions...
+2025-06-19 15:20:15 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-19 15:20:15 [DEBUG] - Verifying slide annotations...
+2025-06-19 15:20:15 [DEBUG] - Verifying tfrecords...
+2025-06-19 15:20:15 [DEBUG] - Verifying slide annotations...
+2025-06-19 15:20:15 [DEBUG] - Verifying tfrecords...
+2025-06-19 15:20:15 [INFO] - Training FastAI MIL model with config:
+2025-06-19 15:20:15 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-19 15:20:20 [WARNING] - Bags missing for 60 slides.
+2025-06-19 15:20:20 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 15:20:20 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 15:20:20 [DEBUG] - Interpreting column "os" as continuous
+2025-06-19 15:20:20 [DEBUG] - Interpreting column "death" as continuous
+2025-06-19 15:20:20 [WARNING] - Bags missing for 240 slides.
+2025-06-19 15:20:20 [WARNING] - Bags missing for 60 slides.
+2025-06-19 15:20:20 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-19 15:20:20 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-19 15:20:20 [DEBUG] - Building FastAI learner
+2025-06-20 10:49:17 [INFO] - Determining feature dimensions...
+2025-06-20 10:49:18 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 10:49:18 [DEBUG] - Verifying slide annotations...
+2025-06-20 10:49:18 [DEBUG] - Verifying tfrecords...
+2025-06-20 10:49:18 [DEBUG] - Verifying slide annotations...
+2025-06-20 10:49:18 [DEBUG] - Verifying tfrecords...
+2025-06-20 10:49:18 [INFO] - Training FastAI MIL model with config:
+2025-06-20 10:49:18 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 10:49:25 [WARNING] - Bags missing for 60 slides.
+2025-06-20 10:49:25 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 10:49:25 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 10:49:25 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 10:49:25 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 10:49:25 [WARNING] - Bags missing for 240 slides.
+2025-06-20 10:49:25 [WARNING] - Bags missing for 60 slides.
+2025-06-20 10:49:25 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-20 10:49:25 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-20 10:49:25 [DEBUG] - Building FastAI learner
+2025-06-20 11:14:47 [INFO] - Determining feature dimensions...
+2025-06-20 11:14:47 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 11:14:47 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:14:47 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:14:47 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:14:47 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:14:47 [INFO] - Training FastAI MIL model with config:
+2025-06-20 11:14:47 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 11:14:50 [WARNING] - Bags missing for 60 slides.
+2025-06-20 11:14:50 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:14:50 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:14:50 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:14:50 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:14:50 [WARNING] - Bags missing for 240 slides.
+2025-06-20 11:14:50 [WARNING] - Bags missing for 60 slides.
+2025-06-20 11:14:50 [INFO] - Training dataset: 0 merged bags (from 240 possible slides)
+2025-06-20 11:14:50 [INFO] - Validation dataset: 0 merged bags (from 60 possible slides)
+2025-06-20 11:14:50 [DEBUG] - Building FastAI learner
+2025-06-20 11:24:23 [INFO] - Determining feature dimensions...
+2025-06-20 11:24:23 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 11:27:53 [INFO] - Determining feature dimensions...
+2025-06-20 11:27:54 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 11:27:54 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:27:54 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:27:54 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:27:54 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:27:54 [INFO] - Training FastAI MIL model with config:
+2025-06-20 11:27:54 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 11:27:57 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:27:57 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:27:57 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:27:57 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:27:57 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-20 11:27:57 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-20 11:27:57 [DEBUG] - Building FastAI learner
+2025-06-20 11:27:57 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-20 11:28:00 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:28:00 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:28:01 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:28:01 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:28:01 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/./models/mil-fake_mm-mb_attention_mil/00016-mb_attention_mil-os/predictions.parquet[/]
+2025-06-20 11:33:58 [INFO] - Determining feature dimensions...
+2025-06-20 11:33:58 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 11:33:58 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:33:58 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:33:58 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:33:58 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:33:58 [INFO] - Training FastAI MIL model with config:
+2025-06-20 11:33:58 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 11:34:02 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:34:02 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:34:02 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:34:02 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:34:02 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-20 11:34:02 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-20 11:34:02 [DEBUG] - Building FastAI learner
+2025-06-20 11:34:02 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-20 11:34:05 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:34:05 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:34:05 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:34:05 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:34:06 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/./models/mil-fake_mm-mb_attention_mil/00017-mb_attention_mil-os/predictions.parquet[/]
+2025-06-20 11:34:37 [INFO] - Determining feature dimensions...
+2025-06-20 11:34:37 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 11:34:37 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:34:37 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:34:37 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:34:37 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:34:37 [INFO] - Training FastAI MIL model with config:
+2025-06-20 11:34:37 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 11:34:39 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:34:39 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:34:39 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:34:39 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:34:39 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-20 11:34:39 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-20 11:34:39 [DEBUG] - Building FastAI learner
+2025-06-20 11:34:40 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-20 11:34:43 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:34:43 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:34:43 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:34:43 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:34:44 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/./models/mil-fake_mm-mb_attention_mil/00018-mb_attention_mil-os/predictions.parquet[/]
+2025-06-20 11:36:58 [INFO] - Determining feature dimensions...
+2025-06-20 11:36:59 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 11:36:59 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:36:59 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:36:59 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:36:59 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:36:59 [INFO] - Training FastAI MIL model with config:
+2025-06-20 11:36:59 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 11:37:02 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:37:02 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:37:02 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:37:02 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:37:02 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-20 11:37:02 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-20 11:37:02 [DEBUG] - Building FastAI learner
+2025-06-20 11:37:02 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-20 11:37:05 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:37:05 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:37:05 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:37:05 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:37:05 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/./models/mil-fake_mm-mb_attention_mil/00019-mb_attention_mil-os/predictions.parquet[/]
+2025-06-20 11:37:47 [INFO] - Determining feature dimensions...
+2025-06-20 11:37:47 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 11:37:47 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:37:47 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:37:47 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:37:47 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:37:47 [INFO] - Training FastAI MIL model with config:
+2025-06-20 11:37:47 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 11:37:50 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:37:50 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:37:50 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:37:50 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:37:50 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-20 11:37:50 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-20 11:37:50 [DEBUG] - Building FastAI learner
+2025-06-20 11:37:50 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-20 11:37:53 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:37:53 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:37:53 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:37:53 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:37:54 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/./models/mil-fake_mm-mb_attention_mil/00020-mb_attention_mil-os/predictions.parquet[/]
+2025-06-20 11:44:42 [INFO] - Determining feature dimensions...
+2025-06-20 11:44:43 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 11:44:43 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:44:43 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:44:43 [DEBUG] - Verifying slide annotations...
+2025-06-20 11:44:43 [DEBUG] - Verifying tfrecords...
+2025-06-20 11:44:43 [INFO] - Training FastAI MIL model with config:
+2025-06-20 11:44:43 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 11:44:45 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:44:45 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:44:45 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:44:45 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:44:45 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-20 11:44:45 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-20 11:44:45 [DEBUG] - Building FastAI learner
+2025-06-20 11:44:45 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-20 11:44:48 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:44:48 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:44:48 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 11:44:48 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 11:44:49 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/./models/mil-fake_mm-mb_attention_mil/00021-mb_attention_mil-os/predictions.parquet[/]
+2025-06-20 11:44:49 [INFO] - C-index (slide-level): 0.905
+2025-06-20 11:44:49 [INFO] - Attention scores exported to [green]/home/hippolyte/PRE/mil/./models/mil-fake_mm-mb_attention_mil/00021-mb_attention_mil-os/attention/15_att.npz[/]
+2025-06-20 12:27:44 [INFO] - Determining feature dimensions...
+2025-06-20 12:27:44 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 12:27:44 [DEBUG] - Verifying slide annotations...
+2025-06-20 12:27:44 [WARNING] - Annotations not loaded.
+2025-06-20 12:27:44 [DEBUG] - Verifying tfrecords...
+2025-06-20 12:27:44 [DEBUG] - Verifying slide annotations...
+2025-06-20 12:27:44 [WARNING] - Annotations not loaded.
+2025-06-20 12:27:44 [DEBUG] - Verifying tfrecords...
+2025-06-20 12:27:44 [INFO] - Training FastAI MIL model with config:
+2025-06-20 12:27:44 [INFO] - TrainerConfig(
+  lr=0.1
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='valid_loss'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_loss'
+  use_lens=True
+)
+2025-06-20 12:28:13 [INFO] - Determining feature dimensions...
+2025-06-20 12:28:13 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 12:28:13 [DEBUG] - Verifying slide annotations...
+2025-06-20 12:28:13 [DEBUG] - Verifying tfrecords...
+2025-06-20 12:28:13 [DEBUG] - Verifying slide annotations...
+2025-06-20 12:28:13 [DEBUG] - Verifying tfrecords...
+2025-06-20 12:28:13 [INFO] - Training FastAI MIL model with config:
+2025-06-20 12:28:13 [INFO] - TrainerConfig(
+  lr=0.1
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='valid_loss'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_loss'
+  use_lens=True
+)
+2025-06-20 12:28:48 [INFO] - Determining feature dimensions...
+2025-06-20 12:28:48 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 12:28:48 [DEBUG] - Verifying slide annotations...
+2025-06-20 12:28:48 [DEBUG] - Verifying tfrecords...
+2025-06-20 12:28:48 [DEBUG] - Verifying slide annotations...
+2025-06-20 12:28:48 [DEBUG] - Verifying tfrecords...
+2025-06-20 12:28:48 [INFO] - Training FastAI MIL model with config:
+2025-06-20 12:28:48 [INFO] - TrainerConfig(
+  lr=0.1
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='valid_loss'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_loss'
+  use_lens=True
+)
+2025-06-20 12:29:38 [INFO] - Determining feature dimensions...
+2025-06-20 12:29:38 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 12:29:38 [DEBUG] - Verifying slide annotations...
+2025-06-20 12:29:38 [DEBUG] - Verifying tfrecords...
+2025-06-20 12:29:38 [DEBUG] - Verifying slide annotations...
+2025-06-20 12:29:38 [DEBUG] - Verifying tfrecords...
+2025-06-20 12:29:38 [INFO] - Training FastAI MIL model with config:
+2025-06-20 12:29:38 [INFO] - TrainerConfig(
+  lr=0.1
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='valid_loss'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_loss'
+  use_lens=True
+)
+2025-06-20 13:45:48 [INFO] - Determining feature dimensions...
+2025-06-20 13:45:49 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 13:45:49 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:45:49 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:45:49 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:45:49 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:45:49 [INFO] - Training FastAI MIL model with config:
+2025-06-20 13:45:49 [INFO] - TrainerConfig(
+  lr=0.1
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='valid_loss'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_loss'
+  use_lens=True
+)
+2025-06-20 13:52:14 [INFO] - Determining feature dimensions...
+2025-06-20 13:52:14 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 13:52:14 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:52:14 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:52:14 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:52:14 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:52:14 [INFO] - Training FastAI MIL model with config:
+2025-06-20 13:52:14 [INFO] - TrainerConfig(
+  lr=0.1
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='valid_loss'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_loss'
+  use_lens=True
+)
+2025-06-20 13:52:18 [DEBUG] - Interpreting column "os" as categorical
+2025-06-20 13:52:18 [DEBUG] - os 0.3315 assigned 0 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 0.5229 assigned 1 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 1.3084 assigned 2 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 10.1301 assigned 3 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 10.2804 assigned 4 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 10.2904 assigned 5 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 10.4662 assigned 6 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 10.7603 assigned 7 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 10.8088 assigned 8 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 11.0299 assigned 9 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 11.1761 assigned 10 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 11.1934 assigned 11 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 12.1717 assigned 12 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 12.2665 assigned 13 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 12.7376 assigned 14 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 13.1031 assigned 15 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 13.3043 assigned 16 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 13.5678 assigned 17 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 13.9981 assigned 18 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 15.3496 assigned 19 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 16.4259 assigned 20 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 16.7624 assigned 21 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 17.3912 assigned 22 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 17.4493 assigned 23 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 17.7069 assigned 24 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 18.5131 assigned 25 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 18.9385 assigned 26 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 2.4384 assigned 27 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 2.7124 assigned 28 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 20.3894 assigned 29 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 20.6946 assigned 30 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 20.7715 assigned 31 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 21.8199 assigned 32 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 21.9247 assigned 33 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 22.1414 assigned 34 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 22.1693 assigned 35 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 23.0536 assigned 36 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 23.3571 assigned 37 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 23.7411 assigned 38 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 24.4065 assigned 39 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 24.8008 assigned 40 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 24.94 assigned 41 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 25.4208 assigned 42 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 25.672 assigned 43 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 25.8283 assigned 44 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 25.8987 assigned 45 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 26.5273 assigned 46 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 26.6764 assigned 47 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 27.6225 assigned 48 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 27.7364 assigned 49 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 28.3364 assigned 50 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 28.486 assigned 51 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 28.8733 assigned 52 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 29.0775 assigned 53 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 29.1122 assigned 54 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 29.1852 assigned 55 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 3.1963 assigned 56 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 3.4507 assigned 57 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 3.6938 assigned 58 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 3.7237 assigned 59 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 3.9674 assigned 60 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 30.1489 assigned 61 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 31.1563 assigned 62 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 31.1664 assigned 63 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 31.2899 assigned 64 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 31.8584 assigned 65 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 32.322 assigned 66 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 32.8077 assigned 67 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 33.2402 assigned 68 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 33.4706 assigned 69 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 33.4868 assigned 70 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 35.1919 assigned 71 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 35.7906 assigned 72 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 35.9969 assigned 73 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 36.6395 assigned 74 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 37.8884 assigned 75 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 37.9372 assigned 76 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 39.0918 assigned 77 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 39.3931 assigned 78 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 39.6862 assigned 79 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 39.8801 assigned 80 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 39.9659 assigned 81 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 4.5296 assigned 82 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 4.5972 assigned 83 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 40.6687 assigned 84 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 41.0608 assigned 85 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 41.4649 assigned 86 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 41.8786 assigned 87 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 43.0303 assigned 88 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 43.0589 assigned 89 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 43.6584 assigned 90 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 43.7706 assigned 91 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 44.4932 assigned 92 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 45.125 assigned 93 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 45.1561 assigned 94 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 46.2928 assigned 95 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 46.4905 assigned 96 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 47.0324 assigned 97 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 47.0586 assigned 98 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 47.1288 assigned 99 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 47.5574 assigned 100 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 47.5718 assigned 101 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 47.9748 assigned 102 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 48.3582 assigned 103 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 5.6259 assigned 104 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 5.7195 assigned 105 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 5.9331 assigned 106 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 51.1753 assigned 107 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 51.2312 assigned 108 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 51.7678 assigned 109 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 52.2401 assigned 110 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 52.3411 assigned 111 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 52.9386 assigned 112 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 52.943 assigned 113 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 53.0812 assigned 114 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 53.1084 assigned 115 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 53.2688 assigned 116 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 53.4398 assigned 117 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 53.6893 assigned 118 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 54.0566 assigned 119 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 54.1496 assigned 120 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 54.9449 assigned 121 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 55.3474 assigned 122 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 55.696 assigned 123 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 57.3534 assigned 124 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 57.5251 assigned 125 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 58.0701 assigned 126 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 58.4497 assigned 127 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 58.9505 assigned 128 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 58.9625 assigned 129 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 59.3578 assigned 130 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 59.5403 assigned 131 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 59.6339 assigned 132 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 59.7009 assigned 133 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 59.8665 assigned 134 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 6.2855 assigned 135 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 60.567 assigned 136 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 61.7154 assigned 137 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 61.9121 assigned 138 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 62.1443 assigned 139 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 62.3293 assigned 140 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 62.9952 assigned 141 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 63.8497 assigned 142 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 64.6546 assigned 143 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 64.7764 assigned 144 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 64.9124 assigned 145 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 66.2216 assigned 146 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 67.3159 assigned 147 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 67.5068 assigned 148 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 67.6882 assigned 149 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 69.2694 assigned 150 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 69.7627 assigned 151 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 69.7778 assigned 152 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 69.8465 assigned 153 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 69.9284 assigned 154 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 7.2314 assigned 155 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 7.2437 assigned 156 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 7.2559 assigned 157 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 7.591 assigned 158 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 7.8231 assigned 159 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 70.4624 assigned 160 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 71.181 assigned 161 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 71.417 assigned 162 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 71.4493 assigned 163 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 71.7209 assigned 164 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 71.7659 assigned 165 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 71.7924 assigned 166 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 72.6885 assigned 167 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 73.7362 assigned 168 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 73.8921 assigned 169 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 74.0093 assigned 170 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 74.6399 assigned 171 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 74.8409 assigned 172 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 74.8935 assigned 173 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 74.8947 assigned 174 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 75.4418 assigned 175 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 75.7979 assigned 176 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 76.2723 assigned 177 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 76.4097 assigned 178 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 76.5752 assigned 179 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 76.7994 assigned 180 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 77.2918 assigned 181 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 78.2858 assigned 182 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 78.3968 assigned 183 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 78.7307 assigned 184 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 78.8329 assigned 185 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 78.9423 assigned 186 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 79.7473 assigned 187 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 79.7571 assigned 188 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 8.2779 assigned 189 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 8.5602 assigned 190 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 80.5419 assigned 191 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 81.052 assigned 192 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 81.6733 assigned 193 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 81.712 assigned 194 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 82.4678 assigned 195 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 82.4957 assigned 196 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 83.1784 assigned 197 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 83.6175 assigned 198 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 84.0663 assigned 199 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 84.4164 assigned 200 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 84.8131 assigned 201 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 85.3326 assigned 202 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 85.5949 assigned 203 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 85.7434 assigned 204 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 86.4894 assigned 205 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 86.8318 assigned 206 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 87.225 assigned 207 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 87.3534 assigned 208 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 88.044 assigned 209 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 88.0898 assigned 210 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 88.242 assigned 211 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 89.0573 assigned 212 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 9.0636 assigned 213 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 90.0158 assigned 214 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 90.6895 assigned 215 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 90.9061 assigned 216 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 91.8859 assigned 217 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 91.9469 assigned 218 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 92.1408 assigned 219 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 92.8591 assigned 220 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 92.8869 assigned 221 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 92.9032 assigned 222 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 93.8367 assigned 223 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 94.0382 assigned 224 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 94.8715 assigned 225 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 95.3322 assigned 226 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 95.836 assigned 227 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 95.9205 assigned 228 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 96.2739 assigned 229 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 96.318 assigned 230 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 96.476 assigned 231 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 97.3061 assigned 232 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 97.5013 assigned 233 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 98.128 assigned 234 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 98.1388 assigned 235 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 98.1748 assigned 236 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 98.4975 assigned 237 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 99.4614 assigned 238 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 99.8825 assigned 239 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - Interpreting column "os" as categorical
+2025-06-20 13:52:18 [DEBUG] - os 1.4997 assigned 0 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 10.3859 assigned 1 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 10.6305 assigned 2 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 13.127 assigned 3 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 13.348 assigned 4 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 13.9748 assigned 5 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 15.0244 assigned 6 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 2.3325 assigned 7 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 2.5824 assigned 8 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 21.2879 assigned 9 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 21.6284 assigned 10 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 23.1346 assigned 11 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 24.5531 assigned 12 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 25.3547 assigned 13 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 26.1086 assigned 14 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 27.4437 assigned 15 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 27.858 assigned 16 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 29.9443 assigned 17 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 32.9174 assigned 18 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 33.7764 assigned 19 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 37.2255 assigned 20 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 40.4887 assigned 21 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 41.5086 assigned 22 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 42.5754 assigned 23 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 42.7533 assigned 24 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 45.8855 assigned 25 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 45.9945 assigned 26 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 49.0485 assigned 27 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 52.6906 assigned 28 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 53.1116 assigned 29 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 54.3967 assigned 30 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 57.7877 assigned 31 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 58.3 assigned 32 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 61.3867 assigned 33 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 63.8888 assigned 34 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 63.9963 assigned 35 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 66.1176 assigned 36 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 66.3386 assigned 37 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 67.21 assigned 38 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 67.7676 assigned 39 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 69.2276 assigned 40 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 7.0043 assigned 41 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 7.3566 assigned 42 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 71.9979 assigned 43 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 75.5487 assigned 44 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 76.7028 assigned 45 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 78.2776 assigned 46 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 8.7352 assigned 47 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 81.189 assigned 48 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 82.8428 assigned 49 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 84.6776 assigned 50 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 89.0435 assigned 51 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 91.9905 assigned 52 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 92.2122 assigned 53 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 93.3578 assigned 54 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 95.7638 assigned 55 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 95.9818 assigned 56 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 96.8529 assigned 57 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 97.4004 assigned 58 [1 slides]
+2025-06-20 13:52:18 [DEBUG] - os 98.6425 assigned 59 [1 slides]
+2025-06-20 13:53:28 [INFO] - Determining feature dimensions...
+2025-06-20 13:53:28 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 13:53:28 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:53:28 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:53:28 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:53:28 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:53:28 [INFO] - Training FastAI MIL model with config:
+2025-06-20 13:53:28 [INFO] - TrainerConfig(
+  lr=0.1
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='valid_loss'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 13:53:59 [INFO] - Determining feature dimensions...
+2025-06-20 13:53:59 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 13:53:59 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:53:59 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:53:59 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:53:59 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:53:59 [INFO] - Training FastAI MIL model with config:
+2025-06-20 13:53:59 [INFO] - TrainerConfig(
+  lr=0.1
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='valid_loss'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 13:54:02 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:54:02 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:54:02 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:54:02 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:54:02 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-20 13:54:02 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-20 13:54:02 [DEBUG] - Building FastAI learner
+2025-06-20 13:54:02 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-20 13:58:49 [INFO] - Determining feature dimensions...
+2025-06-20 13:58:50 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 13:58:50 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:58:50 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:58:50 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:58:50 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:58:50 [INFO] - Training FastAI MIL model with config:
+2025-06-20 13:58:50 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='c_index'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 13:58:52 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:58:52 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:58:52 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:58:52 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:58:52 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-20 13:58:52 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-20 13:58:52 [DEBUG] - Building FastAI learner
+2025-06-20 13:58:52 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-20 13:58:56 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:58:56 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:58:56 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:58:56 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:58:57 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/./models/mil-fake_mm-mb_attention_mil/00022-mb_attention_mil-os/predictions.parquet[/]
+2025-06-20 13:58:57 [INFO] - C-index (slide-level): 0.910
+2025-06-20 13:58:57 [INFO] - Attention scores exported to [green]/home/hippolyte/PRE/mil/./models/mil-fake_mm-mb_attention_mil/00022-mb_attention_mil-os/attention/15_att.npz[/]
+2025-06-20 13:59:06 [INFO] - Determining feature dimensions...
+2025-06-20 13:59:06 [INFO] - Saved 300 slide feature files to tests/features/fake_mm_surv/bags
+2025-06-20 13:59:06 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:59:06 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:59:06 [DEBUG] - Verifying slide annotations...
+2025-06-20 13:59:06 [DEBUG] - Verifying tfrecords...
+2025-06-20 13:59:06 [INFO] - Training FastAI MIL model with config:
+2025-06-20 13:59:06 [INFO] - TrainerConfig(
+  lr=0.01
+  wd=1e-05
+  bag_size=512
+  max_val_bag_size=None
+  fit_one_cycle=True
+  epochs=2
+  batch_size=4
+  drop_last=True
+  save_monitor='valid_loss'
+  weighted_loss=True
+  mixed_bags=True
+  reconstruction_weight=None
+  model='mb_attention_mil'
+  model_kwargs=None
+  loss='mm_survival_loss'
+  use_lens=True
+)
+2025-06-20 13:59:08 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:59:08 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:59:08 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:59:08 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:59:08 [INFO] - Training dataset: 240 merged bags (from 240 possible slides)
+2025-06-20 13:59:08 [INFO] - Validation dataset: 60 merged bags (from 60 possible slides)
+2025-06-20 13:59:08 [DEBUG] - Building FastAI learner
+2025-06-20 13:59:08 [INFO] - Building model [bold]MultiModal_Mixed_Attention_MIL[/] (n_in=[1, 2, 3], n_out=1)
+2025-06-20 13:59:12 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:59:12 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:59:12 [DEBUG] - Interpreting column "os" as continuous
+2025-06-20 13:59:12 [DEBUG] - Interpreting column "death" as continuous
+2025-06-20 13:59:12 [INFO] - Predictions saved to [green]/home/hippolyte/PRE/mil/./models/mil-label/00008-mb_attention_mil-os/predictions.parquet[/]
+2025-06-20 13:59:12 [INFO] - C-index (slide-level): 0.860
+2025-06-20 13:59:12 [INFO] - Attention scores exported to [green]/home/hippolyte/PRE/mil/./models/mil-label/00008-mb_attention_mil-os/attention/15_att.npz[/]

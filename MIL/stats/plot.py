@@ -6,8 +6,8 @@ from typing import TYPE_CHECKING, List, Optional
 
 import numpy as np
 from sklearn import metrics
-from MIL import errors
-from util import matplotlib_backend
+from MIL import errors as errors
+from MIL.util import matplotlib_backend
 if TYPE_CHECKING:
     import neptune.new as neptune
 

@@ -1,21 +1,35 @@
 import os
-import traceback
-import requests
-import slideflow as sf
-from slideflow.mil import mil_config
+#import slideflow as sf
+#from slideflow.mil import mil_config
+#from slideflow.util import prepare_multimodal_mixed_bags
+from MIL.util import prepare_multimodal_mixed_bags
+from MIL.mil import mil_config
+from MIL.project import Project
+
 import multiprocessing
-import pandas as pd
 import argparse
 
 def train_val(args):
-    P = sf.Project(os.getcwd(), create=True)
-    P.annotations = 'annotations/ann_mm_surv.csv'
+    P = Project(os.getcwd(), create=True)
+    P.annotations = 'tests/annotations/ann_mm_surv.csv'
 
     extractor = '.'
     
     epoch = 2
     bag_size = 4
     batch_size = 4
+
+    # Chemins des données
+    bags_dir ='bags'
+    df_path = 'tests/features/fake_mm_surv/df.parquet'    
+
+    # Lecture des features depuis le parquet
+    #df_features = pd.read_parquet('tests/features/fake_mm_surv/df.parquet')
+    
+    prepare_multimodal_mixed_bags(
+    path=df_path,        # Chemin vers le fichier de features
+    bags_path=bags_dir   # Dossier où sauvegarder les bags
+    )
 
     # training and validating on the same dataset
     train_dataset = P.dataset(tile_px=256, tile_um=256, filters={'dataset': 'train'})
@@ -29,18 +43,19 @@ def train_val(args):
             epochs=epoch,
             batch_size=batch_size,
             aggregation_level='slide',
-            loss='mm_loss',
-            lr=0.1
+            loss='mm_survival_loss',
+            lr=0.01
         )
         config.mixed_bags = True
 
         P.train_mil(
             config=config,
             exp_label=f'label',
-            outcomes='adsq',
+            outcomes='os',
+            events='death',  
             train_dataset=train_dataset,
             val_dataset=val_dataset,
-            bags=f'features/fake_mm/bags'
+            bags=f'tests/features/fake_mm_surv/bags'
         )
     else:
         model = 'attention_mil' 
