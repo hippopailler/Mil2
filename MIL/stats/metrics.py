@@ -7,10 +7,12 @@ from os.path import join
 
 from sklearn import metrics
 from typing import Dict, List, Optional, Tuple
-from util import log
-from MIL import errors
+from MIL.util import log
+from MIL import errors as errors
 from pandas.core.frame import DataFrame
-from plot import scatter
+from MIL.stats.plot import scatter
+
+from .concordance import concordance_index as c_index 
 
 def _generate_tile_roc(yt_and_yp: Tuple[np.ndarray, np.ndarray]) -> 'ClassifierMetrics':
     """Génère ROC au niveau des tuiles."""
@@ -162,15 +164,14 @@ def classification_metrics(
         'ap': all_ap
     }
 
-def concordance_index(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """Calcule l'indice de concordance."""
-    E = y_pred[:, -1]  # Events
-    y_pred = y_pred[:, :-1]  # Predictions
-    return metrics.concordance_index_censored(
-        event_indicator=E.astype(bool),
-        event_time=y_true.flatten(),
-        estimate=y_pred.flatten()
-    )[0]
+def concordance_index(y_true: np.ndarray, y_pred: np.ndarray) -> float: 
+    '''Calculates concordance index from a given y_true and y_pred.''' 
+    E = y_pred[:, -1] 
+    y_pred = y_pred[:, :-1] 
+    y_pred = y_pred.flatten() 
+    E = E.flatten() 
+    y_true = y_true.flatten() 
+    return c_index(y_true, y_pred, E) 
 
 def survival_metrics(
     df: DataFrame,

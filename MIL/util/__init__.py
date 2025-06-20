@@ -825,3 +825,13 @@ def prepare_multimodal_mixed_bags(path: str, bags_path: str) -> None:
             progress.advance(task)
 
     log.info(f"Saved {len(slides)} slide feature files to {outdir}")
+
+@contextmanager 
+def matplotlib_backend(backend): 
+    import matplotlib 
+    original_backend = matplotlib.get_backend() 
+    try: 
+        matplotlib.use(backend) 
+        yield 
+    finally: 
+        matplotlib.use(original_backend) 
