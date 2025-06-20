@@ -76,22 +76,71 @@ class Dataset:
         # Chargement des annotations
         if annotations is not None:
             self.load_annotations(annotations)
-
-    def load_annotations(self, annotations: Union[str, pd.DataFrame]) -> None:
-        """Charge les annotations.
+            
+    def load_annotations(self, annotations: Union[str, pd.DataFrame]) -> None: 
+        """Load annotations. 
+ 
+        Args: 
+            annotations (Union[str, pd.DataFrame]): Either path to annotations 
+                in CSV format, or a pandas DataFrame. 
+ 
+        Raises: 
+            errors.AnnotationsError: If annotations are incorrectly formatted. 
+        """ 
+        if isinstance(annotations, str): 
+            if not exists(annotations): 
+                raise errors.AnnotationsError( 
+                    f'Unable to find annotations file {annotations}' 
+                ) 
+            try: 
+                ann_df = pd.read_csv(annotations, dtype=str) 
+                ann_df.fillna('', inplace=True) 
+                self._annotations = ann_df 
+                self.annotations_file = annotations 
+            except pd.errors.EmptyDataError: 
+                log.error(f"Unable to load empty annotations {annotations}") 
+        elif isinstance(annotations, pd.core.frame.DataFrame): 
+            annotations.fillna('', inplace=True) 
+            self._annotations = annotations 
+        else: 
+            raise errors.AnnotationsError( 
+                'Invalid annotations format; expected path or DataFrame' 
+            ) 
+ 
+        # Check annotations 
+        assert self.annotations is not None 
+        if len(self.annotations.columns) == 1: 
+            raise errors.AnnotationsError( 
+                "Only one annotations column detected (is it in CSV format?)" 
+            ) 
+        if len(self.annotations.columns) != len(set(self.annotations.columns)): 
+            raise errors.AnnotationsError( 
+                "Annotations file has duplicate headers; all must be unique" 
+            ) 
+        if 'patient' not in self.annotations.columns: 
+            raise errors.AnnotationsError( 
+                "Patient identifier 'patient' missing in annotations." 
+            ) 
+        if 'slide' not in self.annotations.columns: 
+            if isinstance(annotations, pd.DataFrame): 
+                raise errors.AnnotationsError( 
+                    "If loading annotations from a pandas DataFrame," 
+                    " must include column 'slide' containing slide names." 
+                ) 
+            log.info("Column 'slide' missing in annotations.") 
+            log.info("Attempting to associate patients with slides...") 
+            self.update_annotations_with_slidenames(annotations) 
+            self.load_annotations(annotations) 
+ 
+        # Check for duplicate slides 
+        ann = self.annotations.loc[self.annotations.slide.isin(self.slides())] 
+        if not ann.slide.is_unique: 
+            dup_slide_idx = ann.slide.duplicated() 
+            dup_slides = ann.loc[dup_slide_idx].slide.to_numpy().tolist() 
+            raise errors.DatasetError( 
+                f"Duplicate slides found in annotations: {dup_slides}." 
+            )
         
-        Args:
-            annotations: Chemin vers CSV ou DataFrame
-        """
-        if isinstance(annotations, str):
-            self._annotations = pd.read_csv(annotations)
-        else:
-            self._annotations = annotations.copy()
-
-        # Vérification des colonnes requises
-        if 'slide' not in self._annotations.columns:
-            raise ValueError("La colonne 'slide' est manquante dans les annotations")
-
     @property
     def annotations(self) -> Optional[pd.DataFrame]:
         """Annotations du dataset."""
