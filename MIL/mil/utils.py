@@ -1,19 +1,13 @@
 """Utility functions for MIL."""
 
 import os
-import inspect
 import numpy as np
-import pandas as pd
-import MIL.errors as errors
 import MIL.util as util
 
-from os.path import exists, join, isdir
+from os.path import exists, join
 from typing import Optional, Tuple, Union, Dict, List, Any, TYPE_CHECKING
 
-from MIL.model.torch_utils import get_device
-from MIL.mil import mil_config
-from ._params import TrainerConfig
-from MIL.util import load_json, log, path_to_name, zip_allowed
+from MIL.util import log, path_to_name, zip_allowed
 from MIL.dataset import Dataset
 
 
