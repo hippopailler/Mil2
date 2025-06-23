@@ -9,7 +9,6 @@ from typing import Optional, Union, Callable, List, Tuple, Any, TYPE_CHECKING
 from MIL.util import log, create_new_model_dir
 from MIL import errors
 from MIL.dataset import Dataset
-import MIL.mil as mil
 
 
 from ._registry import get_trainer, build_model_config, get_model
@@ -28,9 +27,6 @@ def concordance_index(axis=-1):
 def mil_config(model: Union[str, Callable], trainer: str = 'fastai', **kwargs):
     """Create a multiple-instance learning (MIL) training configuration.
 
-    All models by default are trained with the FastAI trainer. Additional
-    trainers and additional models can be installed with ``slideflow-extras``.
-
     Args:
         model (str, Callable): Either the name of a model, or a custom torch
             module. Valid model names include ``"attention_mil"``,
@@ -38,7 +34,7 @@ def mil_config(model: Union[str, Callable], trainer: str = 'fastai', **kwargs):
         trainer (str): Type of MIL trainer to use. Only 'fastai' is available,
             unless additional trainers are installed.
         **kwargs: All additional keyword arguments are passed to
-            :class:`slideflow.mil.TrainerConfig`
+            :class:`MIL.mil.TrainerConfig`
 
     """
     return get_trainer(trainer)(model=model, **kwargs)
@@ -71,7 +67,7 @@ class TrainerConfig:
         r"""Training configuration for FastAI MIL models.
 
         This configuration should not be created directly, but rather should
-        be created through :func:`slideflow.mil.mil_config`, which will create
+        be created through :func:`MIL.mil.mil_config`, which will create
         and prepare an appropriate trainer configuration.
 
         Args:
@@ -98,7 +94,7 @@ class TrainerConfig:
             epochs (int): Maximum number of epochs. Defaults to 32.
             batch_size (int): Batch size. Defaults to 64.
             **kwargs: All additional keyword arguments are passed to
-                :class:`slideflow.mil.MILModelConfig`.
+                :class:`MIL.mil.MILModelConfig`.
 
         """
         self._aggregation_level = aggregation_level
@@ -342,10 +338,10 @@ class TrainerConfig:
         """Train a multiple-instance learning (MIL) model.
 
         Args:
-            config (:class:`slideflow.mil.TrainerConfig`):
+            config (:class:`MIL.mil.TrainerConfig`):
                 Trainer and model configuration.
-            train_dataset (:class:`slideflow.Dataset`): Training dataset.
-            val_dataset (:class:`slideflow.Dataset`): Validation dataset.
+            train_dataset (:class:`MIL.Dataset`): Training dataset.
+            val_dataset (:class:`MIL.Dataset`): Validation dataset.
             outcomes (str): Outcome column (annotation header) from which to
                 derive category labels.
             bags (str): Either a path to directory with \*.pt files, or a list
@@ -395,85 +391,6 @@ class TrainerConfig:
             bags,
             outdir=outdir,
             **kwargs
-        )
-
-    def eval(
-        self,
-        model: torch.nn.Module,
-        dataset: Dataset,
-        outcomes: Union[str, List[str]],
-        bags: Union[str, List[str]],
-        *,
-        events: Optional[str] = None,
-        outdir: str = 'mil',
-        attention_heatmaps: bool = False,
-        uq: bool = False,
-        aggregation_level: Optional[str] = None,
-        params: Optional[dict] = None,
-        **heatmap_kwargs
-    ) -> pd.DataFrame:
-        """Evaluate a multiple-instance learning model.
-
-        Saves results for the evaluation in the target folder, including
-        predictions (parquet format), attention (Numpy format for each slide),
-        and attention heatmaps (if ``attention_heatmaps=True``).
-
-        Logs classifier metrics (AUROC and AP) to the console.
-
-        Args:
-            model (torch.nn.Module): Loaded PyTorch MIL model.
-            dataset (sf.Dataset): Dataset to evaluation.
-            outcomes (str, list(str)): Outcomes.
-            bags (str, list(str)): Path to bags, or list of bag file paths.
-                Each bag should contain PyTorch array of features from all tiles in
-                a slide, with the shape ``(n_tiles, n_features)``.
-
-        Keyword arguments:
-            outdir (str): Path at which to save results.
-            attention_heatmaps (bool): Generate attention heatmaps for slides.
-                Not available for multi-modal MIL models. Defaults to False.
-            interpolation (str, optional): Interpolation strategy for smoothing
-                attention heatmaps. Defaults to 'bicubic'.
-            cmap (str, optional): Matplotlib colormap for heatmap. Can be any
-                valid matplotlib colormap. Defaults to 'inferno'.
-            norm (str, optional): Normalization strategy for assigning heatmap
-                values to colors. Either 'two_slope', or any other valid value
-                for the ``norm`` argument of ``matplotlib.pyplot.imshow``.
-                If 'two_slope', normalizes values less than 0 and greater than 0
-                separately. Defaults to None.
-
-        Returns:
-            pd.DataFrame: Dataframe of predictions.
-        """
-        from slideflow.mil.eval import run_eval
-
-        params_to_verify = dict(
-            attention_heatmaps=attention_heatmaps,
-            heatmap_kwargs=heatmap_kwargs,
-            uq=uq,
-            aggregation_level=aggregation_level
-        )
-
-        self._verify_eval_params(**params_to_verify)
-        self.model_config._verify_eval_params(**params_to_verify)
-
-        eval_kwargs = dict(
-            dataset=dataset,
-            outcomes=outcomes,
-            bags=bags,
-            config=self,
-            outdir=outdir,
-            params=params,
-            events=events,
-            aggregation_level=(aggregation_level or self.aggregation_level)
-        )
-
-        return run_eval(
-            model,
-            attention_heatmaps=attention_heatmaps,
-            uq=uq,
-            **heatmap_kwargs,
-            **eval_kwargs
         )
 
     def _build_dataloader(
@@ -1032,12 +949,12 @@ class MILModelConfig:
         """
         self._verify_eval_params(**kwargs)
 
-        from MIL.mil.eval import predict_from_bags, predict_from_multimodal_bags, predict_from_mixed_bags
+        from MIL.mil.eval import predict_from_mixed_bags
 
         if apply_softmax is None:
             apply_softmax = self.apply_softmax
 
-        pred_fn = predict_from_multimodal_bags if self.is_multimodal else predict_from_bags
+        #pred_fn = predict_from_multimodal_bags if self.is_multimodal else predict_from_bags
         if self.is_mixed_bags:
             pred_fn = predict_from_mixed_bags
         return pred_fn(
@@ -1049,56 +966,6 @@ class MILModelConfig:
             **kwargs
         )
 
-    def batched_predict(
-        self,
-        model: "torch.nn.Module",
-        loaded_bags: torch.Tensor,
-        *,
-        device: Optional[Any] = None,
-        forward_kwargs: Optional[dict] = None,
-        attention: bool = False,
-        attention_pooling: Optional[str] = None,
-        uq: bool = False,
-        apply_softmax: Optional[bool] = None
-    ) -> Tuple[np.ndarray, List[np.ndarray]]:
-        """Generate predictions from a batch of bags.
-
-        More efficient than calling :meth:`predict` multiple times.
-
-        Args:
-            model (torch.nn.Module): Loaded PyTorch MIL model.
-            loaded_bags (torch.Tensor): Loaded bags, with shape ``(n_bags, n_tiles, n_features)``.
-
-        Keyword args:
-            device (torch.device, optional): Device on which to run the model.
-                If None, uses the default device.
-            forward_kwargs (dict, optional): Additional keyword arguments to
-                pass to the model's forward function.
-            attention (bool): Whether to return attention maps.
-            attention_pooling (str): Attention pooling strategy. Either 'avg'
-                or 'max'. Defaults to None.
-            uq (bool): Whether to return uncertainty quantification.
-
-        Returns:
-            Tuple[np.ndarray, List[np.ndarray]]: Predictions and attention.
-
-        """
-        from MIL.mil.eval import run_inference
-
-        if apply_softmax is None:
-            apply_softmax = self.apply_softmax
-
-        return run_inference(
-            model,
-            loaded_bags,
-            attention=attention,
-            attention_pooling=attention_pooling,
-            forward_kwargs=forward_kwargs,
-            apply_softmax=apply_softmax,
-            use_lens=self.use_lens,
-            device=device,
-            uq=uq,
-        )
 
     def run_metrics(self, df, level='slide', outdir=None) -> None:
         """Run metrics and save plots to disk.
@@ -1109,7 +976,6 @@ class MILModelConfig:
             outdir (str): Output directory for saving metrics.
 
         """
-        #import slideflow as sf
         import MIL.stats.metrics as stats_metrics
         if self.model_type in ['classification', 'ordinal', 'multimodal']:
             stats_metrics.classification_metrics(df, level=level, data_dir=outdir)
