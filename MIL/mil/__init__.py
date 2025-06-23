@@ -13,11 +13,7 @@ from .train import (
 from .eval import (
     eval_mil,
     predict_mil,
-    predict_multimodal_mil,
-    predict_from_bags,
-    predict_from_multimodal_bags,  
-    get_mil_tile_predictions,
-    generate_mil_features,
+    predict_from_mixed_bags
 )
 
 #from .utils import load_model_weights, load_mil_config

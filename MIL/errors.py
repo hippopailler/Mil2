@@ -1,4 +1,4 @@
-'''Slideflow module errors.'''
+'''Slideflow/MIL module errors.'''
 
 import os
 

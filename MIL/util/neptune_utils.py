@@ -1,12 +1,11 @@
 import random
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
-import slideflow as sf
-from slideflow.util import log
-
+from MIL.util import log
+from MIL._backend import backend
 if TYPE_CHECKING:
     import neptune
-    from slideflow import Dataset
+    from MIL.dataset import Dataset
 
 
 class NeptuneLog:
@@ -73,7 +72,7 @@ class NeptuneLog:
             for key in hp_data.keys()
             if 'validation' in key
         }
-        self.run['backend'] = sf.backend()
+        self.run['backend'] = backend()
         self.run['project_info'] = {key: stringify_unsupported(hp_data[key]) for key in proj_keys}
         self.run['outcomes'] = str(outcomes)
         self.run['model_params/validation'] = stringify_unsupported(validation_params)

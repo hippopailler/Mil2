@@ -23,9 +23,7 @@ from typing import (
     Any, Dict, List, Optional, Tuple, Union, Iterator
 )
 import numpy as np
-#import slideflow as sf
 from MIL import errors
-#from slideflow import errors
 from . import log_utils
 
 tf_available = importlib.util.find_spec('tensorflow')
@@ -69,7 +67,7 @@ NormFit = Union[Dict[str, np.ndarray], Dict[str, List]]
 
 # --- Configure logging--------------------------------------------------------
 
-log = logging.getLogger('slideflow')
+log = logging.getLogger('MIL')
 log.setLevel(logging.DEBUG)
 
 
@@ -113,7 +111,7 @@ log.addHandler(ch)
 
 # Add multiprocessing-friendly file handler
 try:
-    addLoggingFileHandler("slideflow.log")
+    addLoggingFileHandler("MIL.log")
 except Exception as e:
     # If we can't write to the log file, just ignore it
     pass
@@ -295,7 +293,7 @@ def as_list(arg1: Any) -> List[Any]:
 
 
 def is_project(path: str) -> bool:
-    """Checks if the given path is a valid Slideflow project."""
+    """Checks if the given path is a valid MIL project."""
     return isdir(path) and exists(join(path, 'settings.json'))
 
 

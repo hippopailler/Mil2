@@ -35,10 +35,10 @@ def train_mil(
     of bags.
 
     Args:
-        config (:class:`slideflow.mil.TrainerConfig`):
+        config (:class:`MIL.mil.TrainerConfig`):
             Trainer and model configuration.
-        train_dataset (:class:`slideflow.Dataset`): Training dataset.
-        val_dataset (:class:`slideflow.Dataset`): Validation dataset.
+        train_dataset (:class:`MIL.Dataset`): Training dataset.
+        val_dataset (:class:`MIL.Dataset`): Validation dataset.
         outcomes (str): Outcome column (annotation header) from which to
             derive category labels.
         bags (str): Either a path to directory with \*.pt files, or a list
@@ -99,8 +99,8 @@ def build_fastai_learner(
     prior to training.
 
     Args:
-        train_dataset (:class:`slideflow.Dataset`): Training dataset.
-        val_dataset (:class:`slideflow.Dataset`): Validation dataset.
+        train_dataset (:class:`MIL.Dataset`): Training dataset.
+        val_dataset (:class:`MIL.Dataset`): Validation dataset.
         outcomes (str): Outcome column (annotation header) from which to
             derive category labels.
         bags (str): list of paths to individual \*.pt files. Each file should
@@ -215,8 +215,8 @@ def _train_multimodal_mixed_mil(
     """Train an MIL model using FastAI.
 
     Args:
-        train_dataset (:class:`slideflow.Dataset`): Training dataset.
-        val_dataset (:class:`slideflow.Dataset`): Validation dataset.
+        train_dataset (:class:`MIL.Dataset`): Training dataset.
+        val_dataset (:class:`MIL.Dataset`): Validation dataset.
         outcomes (str): Outcome column (annotation header) from which to
             derive category labels.
         bags (str): Either a path to directory with \*.pt files, or a list
