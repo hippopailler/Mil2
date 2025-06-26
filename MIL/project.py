@@ -2,11 +2,11 @@
 
 import os
 from typing import Optional, Union, List
-import pandas as pd
+import csv
 from MIL.dataset import Dataset
 from typing import (TYPE_CHECKING, Any, List, Optional,
                     Union)
-from MIL.util import log, exists, is_project, load_json, relative_path
+from MIL.util import log, exists, is_project, load_json, relative_path, path_to_name
 from os.path import join
 from MIL import errors
 import MIL.mil as mil
@@ -61,14 +61,23 @@ class Project:
  
         """ 
         self.root = root 
+
+        self._settings = {
+        'name': 'MyProject',
+        'annotations': './annotations.csv', 
+        'dataset_config': './datasets.json',
+        # 'models_dir': './models',  # Supprimez cette ligne
+        'eval_dir': './eval',
+        'sources': ['source1']
+    }
         if is_project(root) and kwargs: 
             raise errors.ProjectError(f"Project already exists at {root}") 
         elif is_project(root): 
             self._load(root) 
  
         # Create directories, if not already made 
-        if not exists(self.models_dir): 
-            os.makedirs(self.models_dir) 
+        # if not exists(self.models_dir): 
+        #     os.makedirs(self.models_dir) 
         if not exists(self.eval_dir): 
             os.makedirs(self.eval_dir) 
  
@@ -78,6 +87,44 @@ class Project:
  
         # Neptune 
         self.use_neptune = use_neptune 
+        
+    def create_blank_annotations(
+        self,
+        filename: Optional[str] = None
+    ) -> None:
+            """Create an empty annotations file.
+
+            Args:
+                filename (str): Annotations file destination. If not provided,
+                    will use project default.
+
+            """
+            if filename is None:
+                filename = self.annotations
+            if exists(filename):
+                raise errors.AnnotationsError(
+                    f"Error creating annotations {filename}; file already exists"
+                )
+            if not exists(self.dataset_config):
+                raise errors.AnnotationsError(
+                    f"Dataset config {self.dataset_config} missing."
+                )
+            dataset = Dataset(
+                config=self.dataset_config,
+                sources=self.sources,
+                tile_px=None,
+                tile_um=None,
+                annotations=None
+            )
+            all_paths = dataset.slide_paths(apply_filters=False)
+            slides = [path_to_name(s) for s in all_paths]
+            with open(filename, 'w') as csv_outfile:
+                csv_writer = csv.writer(csv_outfile, delimiter=',')
+                header = ['patient', 'dataset', 'category']
+                csv_writer.writerow(header)
+                for slide in slides:
+                    csv_writer.writerow([slide, '', ''])
+            log.info(f"Wrote annotations file to [green]{filename}")
 
     @property 
     def annotations(self) -> str: 
