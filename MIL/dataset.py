@@ -7,7 +7,7 @@ import MIL.errors as errors
 from glob import glob
 from os.path import join, exists
 from typing import Optional, Dict, Union, List, Tuple
-from MIL.util import log, path_to_name, Labels, as_list, EMPTY, load_json, tile_size_label
+from MIL.util import log, path_to_name, Labels, as_list, EMPTY, load_json, get_slide_paths
 
 class Dataset:
     """Version minimale de Dataset pour MIL."""
@@ -140,6 +140,56 @@ class Dataset:
             raise errors.DatasetError( 
                 f"Duplicate slides found in annotations: {dup_slides}." 
             )
+    def slide_paths(
+        self,
+        source: Optional[str] = None,
+        apply_filters: bool = True
+    ) -> List[str]:
+        """Return a list of paths to slides.
+
+        Either returns a list of paths to all slides, or slides only matching
+        dataset filters.
+
+        Args:
+            source (str, optional): Dataset source name.
+                Defaults to None (using all sources).
+            filter (bool, optional): Return only slide paths meeting filter
+                criteria. If False, return all slides. Defaults to True.
+
+        Returns:
+            list(str): List of slide paths.
+
+        """
+        if source and source not in self.sources.keys():
+            raise errors.DatasetError(f"Dataset {source} not found.")
+        # Get unfiltered paths
+        if source:
+            if not self._slides_set(source):
+                log.warning(f"slides path not set for source {source}")
+                return []
+            else:
+                paths = get_slide_paths(self.sources[source]['slides'])
+        else:
+            paths = []
+            for src in self.sources:
+                if not self._slides_set(src):
+                    log.warning(f"slides path not set for source {src}")
+                else:
+                    paths += get_slide_paths(
+                        self.sources[src]['slides']
+                    )
+
+        # Remove any duplicates from shared dataset paths
+        paths = list(set(paths))
+        # Filter paths
+        if apply_filters:
+            filtered_slides = self.slides()
+            filtered_paths = [
+                p for p in paths if path_to_name(p) in filtered_slides
+            ]
+            return filtered_paths
+        else:
+            return paths
         
     @property
     def annotations(self) -> Optional[pd.DataFrame]:

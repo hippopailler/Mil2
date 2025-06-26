@@ -305,10 +305,16 @@ def is_project(path: str) -> bool:
     config = get_model_config(model_path)
     return config['hp']['uq']
 
+def is_slide(path: str) -> bool:
+    """Checks if the given path is a supported slide."""
+    return (os.path.isfile(path)
+            and path_to_ext(path).lower() in SUPPORTED_FORMATS)
 
-    sys.stdout.write("\r\033[K")
-    sys.stdout.flush()
-
+def get_slide_paths(slides_dir: str) -> List[str]:
+    '''Get all slide paths from a given directory containing slides.'''
+    slide_list = [i for i in glob(join(slides_dir, '**/*.*')) if is_slide(i)]
+    slide_list.extend([i for i in glob(join(slides_dir, '*.*')) if is_slide(i)])
+    return slide_list
 
 def make_dir(_dir: str) -> None:
     """Makes a directory if one does not already exist,
