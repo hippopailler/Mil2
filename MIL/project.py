@@ -4,7 +4,7 @@ import os
 from typing import Optional, Union, List
 import csv
 from MIL.dataset import Dataset
-from typing import (TYPE_CHECKING, Any, List, Optional,
+from typing import ( Any, List, Optional,
                     Union)
 from MIL.util import log, exists, is_project, load_json, relative_path, path_to_name
 from os.path import join

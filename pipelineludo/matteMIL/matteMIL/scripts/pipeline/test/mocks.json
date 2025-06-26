@@ -1,0 +1,10 @@
+{
+    "hyperparam_dir": "/Users/ludole/Desktop/PHD/matteMIL/mil/OS_MONTHS/survival/hyperparameter_tuning/hypothesis_driven/foundation-noimp/rwd_rad_dp_genomics/hyperparam",
+    "final_model_dir": "/Users/ludole/Desktop/PHD/matteMIL/mil/os_months_6/classification/hyperparameter_tuning/data_driven/foundation-noimp/rwd/final_model",
+    "best_models_per_seed": {
+      "0": "/Users/ludole/Desktop/PHD/matteMIL/mil/os_months_6/classification/hyperparameter_tuning/data_driven/foundation-noimp/rwd/final_model/seed_0"
+    },
+    "best_combos_per_seed": {
+      "0": "hparam_bat32_rec02_n_l2"
+    }
+  }

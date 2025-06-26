@@ -1,0 +1,52 @@
+/.neptune/
+/bags*/
+/mil/
+/mil2/
+/outcomes/
+/mil3/
+/todo/
+/stratified/
+/survival_fondation_rwd_dp/
+/3:04/
+/survival 2/
+/trial experiments/
+/os_months_6/
+/scripts/classification/
+/scripts/survival/
+**/.DS_Store
+/df.parquet
+/data/annotations.parquet
+/slideflow.log
+# Ignora file compilati
+*.pyc
+__pycache__/
+# Jupyter checkpoints
+.ipynb_checkpoints/
+/chemoio_*
+/cohort2
+/cross_validation
+/squamous_*
+/hyperparameter_tuning
+/standard
+
+
+
+# File temporanei
+*.log
+*.DS_Store
+
+# matte
+slurm/*
+req_hook.txt
+.vscode/
+
+# results
+/squamous*/
+/standard*/
+/0_del*
+/hyperparameter_tuning*/
+/cross_validation
+/chemo*/
+/chemo*/
+/cohort2*/
+
